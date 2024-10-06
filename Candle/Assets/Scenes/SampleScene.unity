@@ -610,7 +610,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!212 &930367092
 SpriteRenderer:
@@ -691,7 +691,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 930367090}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 5e80d1db47df6b84b940b742ca514eb8, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -729,9 +729,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 386259154eb2a794ca04d1d7f4ec3636, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_JumpForce: 400
-  m_CrouchSpeed: 0.36
-  m_MovementSmoothing: 0.05
+  m_JumpForce: 600
+  m_CrouchSpeed: 0.397
+  m_MovementSmoothing: 0.031
   m_AirControl: 1
   m_WhatIsGround:
     serializedVersion: 2
@@ -758,7 +758,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 930367095}
-  runSpeed: 80
+  runSpeed: 40
 --- !u!1 &983003594
 GameObject:
   m_ObjectHideFlags: 0
@@ -1758,7 +1758,7 @@ CompositeCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.03}
   m_GeometryType: 0
   m_GenerationType: 0
   m_EdgeRadius: 0
@@ -1863,55 +1863,29 @@ CompositeCollider2D:
         Y: -50000000
   m_CompositePaths:
     m_Paths:
-    - - {x: -8.250011, y: 0}
-      - {x: -8, y: 0.2500108}
-      - {x: -7.999923, y: 0.4373459}
-      - {x: -7.874992, y: 0.1874961}
-      - {x: -7.7499986, y: 0.1249995}
-      - {x: -7.562496, y: 0.0625}
-      - {x: -7.374993, y: 0.062506}
-      - {x: -7, y: 0.37501222}
-      - {x: -6.999923, y: 0.4373459}
-      - {x: -6.874992, y: 0.1874961}
-      - {x: -6.7499986, y: 0.1249995}
-      - {x: -6.562496, y: 0.0625}
-      - {x: -6.374993, y: 0.062506}
-      - {x: -6, y: 0.3749251}
-      - {x: -5.9999924, y: 0.1874924}
-      - {x: -5.9374943, y: 0.124998204}
-      - {x: -5.749996, y: 0.0625}
-      - {x: -5.1874924, y: 0.0625076}
-      - {x: -5, y: 0.2500108}
-      - {x: -5.0000076, y: 2.3125076}
-      - {x: -5.687511, y: 3}
-      - {x: -7.937507, y: 2.9999924}
-      - {x: -8, y: 2.9375875}
-      - {x: -8.00003, y: 3}
-      - {x: -9.250008, y: 2.9999933}
-      - {x: -9.9375, y: 2.3750002}
-      - {x: -10, y: 2.3124893}
-      - {x: -9.999995, y: 0.6874931}
-      - {x: -9.812498, y: 0.437498}
-      - {x: -9.249991, y: 0}
-    - - {x: -8, y: 0.93758744}
-      - {x: -8.062413, y: 1}
-      - {x: -8, y: 0.9999706}
-    - - {x: 11.99997, y: -5}
-      - {x: 11.99997, y: -4}
-      - {x: 11, y: -3.9999704}
-      - {x: 10.99997, y: -3}
-      - {x: -3, y: -2.9999707}
-      - {x: -3.0000293, y: -1}
-      - {x: -3.2500072, y: -1.0000067}
-      - {x: -3.9375, y: -1.6249998}
-      - {x: -4, y: -1.6875108}
-      - {x: -4.0000296, y: -2}
-      - {x: -4.9375076, y: -2.0000076}
-      - {x: -5, y: -2.0625107}
-      - {x: -5.0000296, y: -3}
-      - {x: -12, y: -3.0000293}
-      - {x: -11.99997, y: -5}
-  m_VertexDistance: 0.0005
+    - - {x: -8.250015, y: -0.03}
+      - {x: -7.9999747, y: 0.4074845}
+      - {x: -7.3749847, y: 0.0325154}
+      - {x: -6.999987, y: 0.4074988}
+      - {x: -5, y: 0.2200329}
+      - {x: -5.0000076, y: 2.2825077}
+      - {x: -5.687511, y: 2.97}
+      - {x: -9.250008, y: 2.9699934}
+      - {x: -9.999998, y: 2.282487}
+      - {x: -9.812491, y: 0.407493}
+      - {x: -9.249991, y: -0.03}
+    - - {x: 11.99997, y: -5.03}
+      - {x: 11.99997, y: -4.03}
+      - {x: 11, y: -4.0299706}
+      - {x: 10.99997, y: -3.03}
+      - {x: -3, y: -3.0299706}
+      - {x: -3.0000618, y: -1.0300617}
+      - {x: -4.0000095, y: -2.0300007}
+      - {x: -5, y: -2.0925272}
+      - {x: -5.0000296, y: -3.03}
+      - {x: -12, y: -3.0300293}
+      - {x: -11.99997, y: -5.03}
+  m_VertexDistance: 0.23
   m_OffsetDistance: 0.00005
   m_UseDelaunayMesh: 0
   m_CompositeGameObject: {fileID: 1688309010}
