@@ -38,7 +38,7 @@ public class PlayerMovement : MonoBehaviour{
         controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
 
         jump = false;
-        Debug.Log(crouch);
+        
     }
 
 }
