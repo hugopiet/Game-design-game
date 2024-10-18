@@ -7241,12 +7241,12 @@ GameObject:
   m_Component:
   - component: {fileID: 930367093}
   - component: {fileID: 930367092}
-  - component: {fileID: 930367095}
   - component: {fileID: 930367091}
   - component: {fileID: 930367094}
   - component: {fileID: 930367097}
-  - component: {fileID: 930367096}
   - component: {fileID: 930367098}
+  - component: {fileID: 930367100}
+  - component: {fileID: 930367099}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -7386,49 +7386,6 @@ CircleCollider2D:
   m_Offset: {x: 0.26273727, y: -2.2317758}
   serializedVersion: 2
   m_Radius: 1.3307061
---- !u!114 &930367095
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 930367090}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 386259154eb2a794ca04d1d7f4ec3636, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_JumpForce: 1500
-  m_CrouchSpeed: 0.397
-  m_MovementSmoothing: 0.021
-  m_AirControl: 1
-  m_WhatIsGround:
-    serializedVersion: 2
-    m_Bits: 183
-  m_GroundCheck: {fileID: 521644100}
-  m_CeilingCheck: {fileID: 885041208}
-  m_CrouchDisableCollider: {fileID: 0}
-  OnLandEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  OnCrouchEvent:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &930367096
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 930367090}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b50924868f604c4bb4bcfd6956f14c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controller: {fileID: 930367095}
-  animator: {fileID: 930367098}
-  runSpeed: 120
 --- !u!61 &930367097
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7495,6 +7452,49 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &930367099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 930367090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 386259154eb2a794ca04d1d7f4ec3636, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_JumpForce: 1400
+  m_CrouchSpeed: 0.5
+  m_MovementSmoothing: 0.1
+  m_AirControl: 1
+  m_WhatIsGround:
+    serializedVersion: 2
+    m_Bits: 183
+  m_GroundCheck: {fileID: 521644100}
+  m_CeilingCheck: {fileID: 885041208}
+  m_CrouchDisableCollider: {fileID: 0}
+  OnLandEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCrouchEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &930367100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 930367090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b50924868f604c4bb4bcfd6956f14c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 930367099}
+  animator: {fileID: 930367098}
+  runSpeed: 120
 --- !u!1 &983003594
 GameObject:
   m_ObjectHideFlags: 0
