@@ -156,6 +156,7 @@ MonoBehaviour:
   radius: 8
   speed: 15
   slowingDistance: 5
+  waitTime: 5
 --- !u!212 &95320548
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -855,7 +856,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 16.690176
+  orthographic size: 19.171415
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

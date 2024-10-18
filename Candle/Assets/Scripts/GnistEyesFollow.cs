@@ -10,8 +10,27 @@ public class GnistEyesFollow : MonoBehaviour
     public float heightOffset = 0.5f; // Height offset from the center of gnist
     public Transform eyes; // Reference to the eyes object
 
+    private enum State { Follow, Position, Wait }
+    private State currentState = State.Follow;
+
     // Update is called once per frame
     void Update()
+    {
+        switch (currentState)
+        {
+            case State.Follow:
+                FollowPlayer();
+                break;
+            case State.Position:
+                // Add Position state logic here
+                break;
+            case State.Wait:
+                // Add Wait state logic here
+                break;
+        }
+    }
+
+    void FollowPlayer()
     {
         // Calculate the direction from gnist to the player
         Vector3 direction = (player.position - gnist.position).normalized;
