@@ -322,6 +322,7 @@ GameObject:
   - component: {fileID: 205177752}
   - component: {fileID: 205177751}
   - component: {fileID: 205177750}
+  - component: {fileID: 205177755}
   - component: {fileID: 205177749}
   - component: {fileID: 205177748}
   - component: {fileID: 205177747}
@@ -400,7 +401,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.2570206, y: 0.31431985}
+  m_Offset: {x: 0.24637699, y: 0.4256227}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -411,7 +412,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.6081536, y: 5.1957574}
+  m_Size: {x: 2.5868664, y: 4.9731517}
   m_EdgeRadius: 0
 --- !u!58 &205177750
 CircleCollider2D:
@@ -496,13 +497,25 @@ MonoBehaviour:
     m_Bits: 183
   m_GroundCheck: {fileID: 1352944374}
   m_CeilingCheck: {fileID: 746708413}
-  m_CrouchDisableCollider: {fileID: 0}
+  m_CrouchDisableCollider: {fileID: 205177749}
   OnLandEvent:
     m_PersistentCalls:
       m_Calls: []
   OnCrouchEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 205177748}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: OnCrouching
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!212 &205177753
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -573,12 +586,18 @@ Transform:
   - {fileID: 1352944374}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
 --- !u!1 &289125569
 GameObject:
+=======
+--- !u!61 &205177755
+BoxCollider2D:
+>>>>>>> fdb11d8b8a5786917691a5afcbbff45bf8aa3b2b
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   serializedVersion: 6
   m_Component:
   - component: {fileID: 289125570}
@@ -691,6 +710,47 @@ Transform:
   - {fileID: 289125570}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+=======
+  m_GameObject: {fileID: 205177746}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.25792694, y: -0.85598946}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 4.06, y: 7.72}
+    newSize: {x: 16.4, y: 23.603092}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.57341, y: 3.1583328}
+  m_EdgeRadius: 0
+>>>>>>> fdb11d8b8a5786917691a5afcbbff45bf8aa3b2b
 --- !u!1 &570404274
 GameObject:
   m_ObjectHideFlags: 0
