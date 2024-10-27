@@ -11,9 +11,18 @@ public class PlayerMovement : MonoBehaviour{
     float horizontalMove = 0f; 
     bool jump = false;
     bool crouch = false;
+
+    private FootstepController footstepController;
+
     void Start()
     {
-        
+        footstepController = GetComponentInChildren<FootstepController>(); // Get the FootstepController component
+
+    }
+
+     private void Awake()
+    {
+        //footstepController = GetComponentInChildren<FootstepController>(); // Get the FootstepController component
     }
 
     // Update is called once per frame
@@ -23,6 +32,8 @@ public class PlayerMovement : MonoBehaviour{
         horizontalMove = Input.GetAxis("Horizontal") * runSpeed;
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
         
+   
+
         if (Input.GetButtonDown("Jump") ){
             jump = true;
         }
@@ -30,6 +41,13 @@ public class PlayerMovement : MonoBehaviour{
             crouch = true;
         } else if (Input.GetButtonUp("Crouch")){
             crouch = false;
+        }
+
+        if (horizontalMove == 0){
+            footstepController.StopWalking();
+        }
+        else{
+            footstepController.StartWalking();
         }
     }
 
@@ -40,8 +58,9 @@ public class PlayerMovement : MonoBehaviour{
     void FixedUpdate(){
         // move the character
         controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
-
         jump = false;
+
+      
         
     }
 
