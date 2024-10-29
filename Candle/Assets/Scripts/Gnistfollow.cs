@@ -9,6 +9,7 @@ public class Gnistfollow : MonoBehaviour
     public float speed = 2.0f; // Movement speed of gnist
     public float slowingDistance = 5.0f; // Distance over which gnist slows down
     public float waitTime = 5.0f; // Time to wait in the Wait state
+    public float border = 0.1f; // Buffer distance within the view
 
     private enum State { Follow, Position, Wait }
     private State currentState = State.Follow;
@@ -18,6 +19,13 @@ public class Gnistfollow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Check if gnist is within the camera view
+        if (!IsInView())
+        {
+            currentState = State.Follow;
+            Debug.Log("Gnist exited camera view, state changed to Follow");
+        }
+
         //Debug.Log("Current State: " + currentState.ToString());
         switch (currentState)
         {
@@ -105,5 +113,11 @@ public class Gnistfollow : MonoBehaviour
             currentState = State.Follow;
             Debug.Log("Wait time over, state changed to Follow");
         }
+    }
+
+    bool IsInView()
+    {
+        Vector3 screenPoint = Camera.main.WorldToViewportPoint(transform.position);
+        return screenPoint.z > 0 && screenPoint.x > border && screenPoint.x < 1 - border && screenPoint.y > border && screenPoint.y < 1 - border;
     }
 }
