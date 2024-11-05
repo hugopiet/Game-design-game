@@ -15,7 +15,15 @@ public class Gnistfollow : MonoBehaviour
     private Vector3 targetPosition; // Target position for the Position state
     private float waitCounter; // Counter for the Wait state
 
+    private FootstepController footstepController;
     // Update is called once per frame
+
+    void Start()
+    {
+        footstepController = GetComponentInChildren<FootstepController>(); // Get the FootstepController component
+
+    }
+
     void Update()
     {
         //Debug.Log("Current State: " + currentState.ToString());
@@ -52,7 +60,7 @@ public class Gnistfollow : MonoBehaviour
         float distance = Vector3.Distance(transform.position, player.position);
 
         // If the distance is greater than the radius, move gnist towards the player
-        if (distance > radius)
+        if ((distance - radius)> 0.1f)
         {
             // Calculate the direction to move towards the player
             Vector3 direction = (player.position - transform.position).normalized;
@@ -66,6 +74,12 @@ public class Gnistfollow : MonoBehaviour
 
             // Move gnist towards the player
             transform.position += direction * adjustedSpeed * Time.deltaTime;
+           
+            footstepController.StartWalking();
+        }
+        else{
+
+            footstepController.StopWalking();
         }
     }
 
