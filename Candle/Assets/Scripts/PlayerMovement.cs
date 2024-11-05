@@ -14,13 +14,14 @@ public class PlayerMovement : MonoBehaviour{
 
     private FootstepController footstepController;
 
-    public Camera _mainCamera;
+    //public Camera _mainCamera;
 
-    private Bounds _mainBounds;
-    private Vector3 _targetPosition;
+   // private Bounds _mainBounds;
+   // private Vector3 _targetPosition;
     void Start()
     {
         footstepController = GetComponentInChildren<FootstepController>(); // Get the FootstepController component
+        /*
         var height = _mainCamera.orthographicSize;
         var width = height * _mainCamera.aspect; 
 
@@ -34,12 +35,12 @@ public class PlayerMovement : MonoBehaviour{
         cameraBounds.SetMinMax(
             new Vector3(minX, minY, 0f),
             new Vector3(maxX, maxY, 0f)
-        );
+        );*/
     }
 
      private void Awake()
     {
-        _mainCamera = Camera.main;
+        //_mainCamera = Camera.main;
         //footstepController = GetComponentInChildren<FootstepController>(); // Get the FootstepController component
     }
 
