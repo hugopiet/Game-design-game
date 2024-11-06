@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,11 +11,14 @@ public class Gnistfollow : MonoBehaviour
     public float slowingDistance = 5.0f; // Distance over which gnist slows down
     public float waitTime = 5.0f; // Time to wait in the Wait state
     public float border = 0.1f; // Buffer distance within the view
+    public GnistStats gnistStats; // Reference to the GnistStats script
 
-    private enum State { Follow, Position, Wait }
-    private State currentState = State.Follow;
+    public enum State { Follow, Position, Wait }
+    public State currentState = State.Follow;
     private Vector3 targetPosition; // Target position for the Position state
     private float waitCounter; // Counter for the Wait state
+
+    public FlameUp flameUp;
 
     // Update is called once per frame
     void Update()
@@ -26,7 +30,7 @@ public class Gnistfollow : MonoBehaviour
             Debug.Log("Gnist exited camera view, state changed to Follow");
         }
 
-        //Debug.Log("Current State: " + currentState.ToString());
+        Debug.Log("Current State: " + currentState.ToString());
         switch (currentState)
         {
             case State.Follow:
@@ -55,7 +59,7 @@ public class Gnistfollow : MonoBehaviour
 
     void FollowPlayer()
     {
-        Debug.Log("Following player");
+        //Debug.Log("Following player");
         // Calculate the distance between gnist and the player
         float distance = Vector3.Distance(transform.position, player.position);
 
@@ -75,11 +79,17 @@ public class Gnistfollow : MonoBehaviour
             // Move gnist towards the player
             transform.position += direction * adjustedSpeed * Time.deltaTime;
         }
+
+        // Regenerate stamina when within the follow radius
+        if (distance <= radius)
+        {
+            gnistStats.RegenerateStamina(5f * Time.deltaTime);
+        }
     }
 
     void MoveToPosition()
     {
-        Debug.Log("Moving to position: " + targetPosition);
+        //Debug.Log("Moving to position: " + targetPosition);
         // Calculate the distance between gnist and the target position
         float distance = Vector3.Distance(transform.position, targetPosition);
 
@@ -103,15 +113,23 @@ public class Gnistfollow : MonoBehaviour
 
     void WaitState()
     {
-        Debug.Log("Waiting...");
-        // Decrease the wait counter
-        waitCounter -= Time.deltaTime;
+        //Debug.Log("Waiting...");
+        // Decrease stamina based on the flameUp state
+        if (gnistStats.flameUp.flameUp)
+        {
+            gnistStats.DepleteStamina(10f * Time.deltaTime);
+        }
+        else
+        {
+            gnistStats.DepleteStamina(5f * Time.deltaTime);
+        }
 
-        // If the wait counter reaches zero, transition to Follow state
-        if (waitCounter <= 0)
+        // If the current stamina reaches zero, transition to Follow state
+        if (gnistStats.currentStamina <= 0)
         {
             currentState = State.Follow;
-            Debug.Log("Wait time over, state changed to Follow");
+            gnistStats.flameUp.flameUp = false; // Reset the flameUp state
+            Debug.Log("Stamina depleted, state changed to Follow");
         }
     }
 
