@@ -20,16 +20,6 @@ public class GnistStats : MonoBehaviour
     void Update()
     {
         Debug.Log("FlameUp: " + flameUp.flameUp);
-        if (flameUp.flameUp )
-        {
-            // Deplete stamina by 10 per second
-            DepleteStamina(10f * Time.deltaTime);
-        }
-        else
-        {
-            // Regenerate stamina by 5 per second
-            RegenerateStamina(5f * Time.deltaTime);
-        }
 
         // Update the health bar using the instance reference
         healthBar.SetStamina(currentStamina);
