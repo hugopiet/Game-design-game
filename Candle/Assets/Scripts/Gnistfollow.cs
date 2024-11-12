@@ -139,6 +139,7 @@ public class Gnistfollow : MonoBehaviour
             currentState = State.Follow;
             gnistStats.flameUp.flameUp = false; // Reset the flameUp state
             Debug.Log("Stamina depleted, state changed to Follow");
+            flameUp.OnFlameUp(false); // Turn off flameUp animation
         }
     }
 
