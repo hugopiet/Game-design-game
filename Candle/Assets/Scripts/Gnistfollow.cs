@@ -29,10 +29,10 @@ public class Gnistfollow : MonoBehaviour
         if (!IsInView())
         {
             currentState = State.Follow;
-            Debug.Log("Gnist exited camera view, state changed to Follow");
+            //Debug.Log("Gnist exited camera view, state changed to Follow");
         }
 
-        Debug.Log("Current State: " + currentState.ToString());
+        //Debug.Log("Current State: " + currentState.ToString());
         switch (currentState)
         {
             case State.Follow:
@@ -68,7 +68,7 @@ public class Gnistfollow : MonoBehaviour
 
     void FollowPlayer()
     {
-        Debug.Log("Following player");
+        //Debug.Log("Following player");
         // Calculate the distance between gnist and the player
         float distance = Vector3.Distance(transform.position, player.position);
 
@@ -92,7 +92,7 @@ public class Gnistfollow : MonoBehaviour
         // Regenerate stamina when within the follow radius
         if (distance <= radius+slowingDistance)
         {
-            Debug.Log("Regenerating stamina... within radius");
+            //Debug.Log("Regenerating stamina... within radius");
             gnistStats.RegenerateStamina(staminaRegenRate * Time.deltaTime);
         }
     }

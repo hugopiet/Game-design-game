@@ -19,7 +19,7 @@ public class GnistStats : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("FlameUp: " + flameUp.flameUp);
+        //Debug.Log("FlameUp: " + flameUp.flameUp);
 
         // Update the health bar using the instance reference
         healthBar.SetStamina(currentStamina);
