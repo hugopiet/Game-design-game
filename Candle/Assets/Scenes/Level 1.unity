@@ -170,6 +170,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4678897010691010298, guid: 5f72232731cdf4046981cc6a696a1a6f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6766569617343360397, guid: 5f72232731cdf4046981cc6a696a1a6f, type: 3}
       propertyPath: m_Name
       value: Player
@@ -189,7 +193,7 @@ GameObject:
   m_Component:
   - component: {fileID: 151997273}
   - component: {fileID: 151997272}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Level-1-assets-trees-1-background-sky (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -362,7 +366,7 @@ GameObject:
   m_Component:
   - component: {fileID: 296393348}
   - component: {fileID: 296393347}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Level-1-assets-trees-1-background-mountains
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -537,7 +541,7 @@ GameObject:
   m_Component:
   - component: {fileID: 315873193}
   - component: {fileID: 315873194}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sky
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -802,7 +806,7 @@ GameObject:
   m_Component:
   - component: {fileID: 369646979}
   - component: {fileID: 369646978}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Level-1-assets-trees-1-background-sky (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1983,7 +1987,7 @@ GameObject:
   m_Component:
   - component: {fileID: 672552328}
   - component: {fileID: 672552327}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Level-1-assets-trees-1-background-sky (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2967,7 +2971,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1146508121}
   - component: {fileID: 1146508122}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Mountains
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3393,7 +3397,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1372450218}
   - component: {fileID: 1372450217}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Level-1-assets-trees-1-background-mountains (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3636,7 +3640,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1404287818}
   - component: {fileID: 1404287817}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Level-1-assets-trees-1-background-sky
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4855,8 +4859,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2071372230}
-  m_Layer: 0
-  m_Name: backgorund
+  m_Layer: 3
+  m_Name: background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
