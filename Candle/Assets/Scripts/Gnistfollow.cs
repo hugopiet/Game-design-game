@@ -10,8 +10,8 @@ public class Gnistfollow : MonoBehaviour
     public float slowingDistance = 5.0f; // Distance over which gnist slows down
     public float waitTime = 5.0f; // Time to wait in the Wait state
 
-    private enum State { Follow, Position, Wait }
-    private State currentState = State.Follow;
+    public enum State { Follow, Position, Wait }
+    public State currentState = State.Follow;
     private Vector3 targetPosition; // Target position for the Position state
     private float waitCounter; // Counter for the Wait state
 
@@ -109,7 +109,7 @@ public class Gnistfollow : MonoBehaviour
 
     void WaitState()
     {
-        Debug.Log("Waiting...");
+        //Debug.Log("Waiting...");
         // Decrease the wait counter
         waitCounter -= Time.deltaTime;
 
