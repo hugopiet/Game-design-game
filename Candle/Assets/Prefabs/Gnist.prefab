@@ -115,6 +115,7 @@ GameObject:
   - component: {fileID: 6883198645770091528}
   - component: {fileID: 2049592471261170488}
   - component: {fileID: 2340202617332128474}
+  - component: {fileID: 5408453065136232542}
   - component: {fileID: 7298942339939433810}
   m_Layer: 0
   m_Name: Gnist
@@ -246,6 +247,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flameUp: 0
   gnistfollow: {fileID: 6883198645770091528}
+--- !u!114 &5408453065136232542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7742417119977072897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52b6daa5124e94ef2b13304c49d4c827, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  footstepSounds: []
+  minTimeBetweenFootsteps: 1.5
+  maxTimeBetweenFootsteps: 2.5
 --- !u!95 &7298942339939433810
 Animator:
   serializedVersion: 5
