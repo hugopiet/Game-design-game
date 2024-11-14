@@ -71,8 +71,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -236416151
+  m_SortingLayer: 1
   m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: 479be3155f1dcd042a19afc21a9122ff, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -113,6 +113,7 @@ GameObject:
   - component: {fileID: 4564682889468209769}
   - component: {fileID: 4952264203990694265}
   - component: {fileID: 6883198645770091528}
+  - component: {fileID: 6614759656515700892}
   - component: {fileID: 2049592471261170488}
   - component: {fileID: 2340202617332128474}
   - component: {fileID: 5408453065136232542}
@@ -179,11 +180,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -236416151
+  m_SortingLayer: 1
   m_SortingOrder: 3
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.8773585, g: 0.4313841, b: 0.21933962, a: 1}
+  m_Color: {r: 0.8773585, g: 0.4313841, b: 0.21933962, a: 0.4745098}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -216,6 +217,102 @@ MonoBehaviour:
   gnistStats: {fileID: 2049592471261170488}
   currentState: 0
   flameUp: {fileID: 2340202617332128474}
+--- !u!82 &6614759656515700892
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7742417119977072897}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 0.73
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &2049592471261170488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -259,9 +356,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52b6daa5124e94ef2b13304c49d4c827, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  footstepSounds: []
-  minTimeBetweenFootsteps: 1.5
-  maxTimeBetweenFootsteps: 2.5
+  footstepSounds:
+  - {fileID: 8300000, guid: ea96b7fee74b34ba6a49f9bbb16902aa, type: 3}
+  - {fileID: 8300000, guid: 54aa1c4a8e4c14ce5b47c0066d7babdd, type: 3}
+  - {fileID: 8300000, guid: afd3f5561767e497e8b8bb91d09f9c19, type: 3}
+  - {fileID: 8300000, guid: 3f1be5cc91b8b41c38b05802126ca76e, type: 3}
+  - {fileID: 8300000, guid: c888368825f3e46eab87218bb8aa4b00, type: 3}
+  - {fileID: 8300000, guid: 8128aba23c4a5433c897c127827f04de, type: 3}
+  - {fileID: 8300000, guid: c3b37a59ca0ba458590f6776da2296a0, type: 3}
+  minTimeBetweenFootsteps: 2
+  maxTimeBetweenFootsteps: 3
 --- !u!95 &7298942339939433810
 Animator:
   serializedVersion: 5
