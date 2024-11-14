@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +9,11 @@ public class Gnistfollow : MonoBehaviour
     public float radius = 5.0f; // Distance threshold
     public float speed = 2.0f; // Movement speed of gnist
     public float slowingDistance = 5.0f; // Distance over which gnist slows down
-    public float waitTime = 5.0f; // Time to wait in the Wait state
+    public float border = 0.1f; // Buffer distance within the view
+    public float staminaRegenRate = 5.0f; // Rate of stamina regeneration
+    public float staminaDepleteRate = 5.0f; // Rate of stamina depletion
+    public float staminaDepleteRateFlameUp = 10.0f; // Rate of stamina depletion when flameUp is active
+    public GnistStats gnistStats; // Reference to the GnistStats script
 
     public enum State { Follow, Position, Wait }
     public State currentState = State.Follow;
@@ -16,6 +21,8 @@ public class Gnistfollow : MonoBehaviour
     private float waitCounter; // Counter for the Wait state
 
     private FootstepController footstepController;
+    public FlameUp flameUp;
+
     // Update is called once per frame
 
     void Start()
@@ -26,6 +33,13 @@ public class Gnistfollow : MonoBehaviour
 
     void Update()
     {
+        // Check if gnist is within the camera view
+        if (!IsInView())
+        {
+            currentState = State.Follow;
+            //Debug.Log("Gnist exited camera view, state changed to Follow");
+        }
+
         //Debug.Log("Current State: " + currentState.ToString());
         switch (currentState)
         {
@@ -41,7 +55,7 @@ public class Gnistfollow : MonoBehaviour
         }
 
         // Check for "Fire1" input to activate Position state
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") && gnistStats.currentStamina > 0)
         {
             Debug.Log("Fire1 input detected");
             Vector3 mousePosition = Input.mousePosition;
@@ -51,11 +65,18 @@ public class Gnistfollow : MonoBehaviour
             Debug.Log("Clicked Position: " + targetPosition);
             Debug.Log("State changed to Position");
         }
+
+        // Check for "R" input to activate Follow state
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            currentState = State.Follow;
+            Debug.Log("R key pressed, state changed to Follow");
+        }
     }
 
     void FollowPlayer()
     {
-        Debug.Log("Following player");
+        //Debug.Log("Following player");
         // Calculate the distance between gnist and the player
         float distance = Vector3.Distance(transform.position, player.position);
 
@@ -81,11 +102,18 @@ public class Gnistfollow : MonoBehaviour
 
             footstepController.StopWalking();
         }
+
+        // Regenerate stamina when within the follow radius
+        if (distance <= radius+slowingDistance)
+        {
+            //Debug.Log("Regenerating stamina... within radius");
+            gnistStats.RegenerateStamina(staminaRegenRate * Time.deltaTime);
+        }
     }
 
     void MoveToPosition()
     {
-        Debug.Log("Moving to position: " + targetPosition);
+        //Debug.Log("Moving to position: " + targetPosition);
         // Calculate the distance between gnist and the target position
         float distance = Vector3.Distance(transform.position, targetPosition);
 
@@ -102,7 +130,6 @@ public class Gnistfollow : MonoBehaviour
         {
             // Transition to Wait state when gnist reaches the target position
             currentState = State.Wait;
-            waitCounter = waitTime; // Initialize the wait counter
             Debug.Log("Reached target position, state changed to Wait");
         }
     }
@@ -112,12 +139,29 @@ public class Gnistfollow : MonoBehaviour
         //Debug.Log("Waiting...");
         // Decrease the wait counter
         waitCounter -= Time.deltaTime;
+        // Decrease stamina based on the flameUp state
+        if (gnistStats.flameUp.flameUp)
+        {
+            gnistStats.DepleteStamina(staminaDepleteRateFlameUp * Time.deltaTime);
+        }
+        else
+        {
+            gnistStats.DepleteStamina(staminaDepleteRate * Time.deltaTime);
+        }
 
-        // If the wait counter reaches zero, transition to Follow state
-        if (waitCounter <= 0)
+        // If the current stamina reaches zero, transition to Follow state
+        if (gnistStats.currentStamina <= 0)
         {
             currentState = State.Follow;
-            Debug.Log("Wait time over, state changed to Follow");
+            gnistStats.flameUp.flameUp = false; // Reset the flameUp state
+            Debug.Log("Stamina depleted, state changed to Follow");
+            flameUp.OnFlameUp(false); // Turn off flameUp animation
         }
+    }
+
+    bool IsInView()
+    {
+        Vector3 screenPoint = Camera.main.WorldToViewportPoint(transform.position);
+        return screenPoint.z > 0 && screenPoint.x > border && screenPoint.x < 1 - border && screenPoint.y > border && screenPoint.y < 1 - border;
     }
 }

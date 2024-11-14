@@ -3,17 +3,18 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - MovingPlatform
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Backgorund
   - Water
   - UI
   - Player
   - Obstacle
-  - 
+  - Foreground
   - 
   - 
   - 
@@ -46,4 +47,7 @@ TagManager:
     locked: 0
   - name: Foreground
     uniqueID: 4058551145
+    locked: 0
+  - name: UI
+    uniqueID: 1066699097
     locked: 0
