@@ -408,7 +408,7 @@ MonoBehaviour:
   controller: {fileID: 3152006433532254562}
   animator: {fileID: 7933312376512631620}
   runSpeed: 80
-  jump: 0
+  Isjump: 0
 --- !u!95 &7933312376512631620
 Animator:
   serializedVersion: 5
@@ -777,7 +777,7 @@ Transform:
   m_GameObject: {fileID: 8973026353031167479}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.1, y: 3.09, z: 0}
+  m_LocalPosition: {x: 0.1, y: 3.01, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
