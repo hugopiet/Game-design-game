@@ -122,6 +122,7 @@ public class InteractionController : MonoBehaviour
         {
             highlightParticles.Stop();
         }
+        actionTriggered = false;
     }
 
     private void ShowInformation()
