@@ -644,15 +644,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1286481431237680654, guid: 5f72232731cdf4046981cc6a696a1a6f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.608015
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1992345554317692845, guid: 5f72232731cdf4046981cc6a696a1a6f, type: 3}
+      propertyPath: orthographic size
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 3975568521845859152, guid: 5f72232731cdf4046981cc6a696a1a6f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 14.8
+      value: -111.1
       objectReference: {fileID: 0}
     - target: {fileID: 3975568521845859152, guid: 5f72232731cdf4046981cc6a696a1a6f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -22.9
+      value: -20.8
       objectReference: {fileID: 0}
     - target: {fileID: 3975568521845859152, guid: 5f72232731cdf4046981cc6a696a1a6f, type: 3}
       propertyPath: m_LocalPosition.z
