@@ -5,18 +5,18 @@ using UnityEngine;
 public class SparkGuide : MonoBehaviour
 {
     public GameObject particleEmitter; // Reference to the particle emitter
-    public Transform bonesParent; // Reference to the parent object of the bones
+    public Transform ropesParent; // Reference to the parent object of all ropes
     public float moveSpeed = 5f; // Speed of the particle emitter
 
     private bool isActivated = false;
-    private List<Transform> pathPoints = new List<Transform>(); // List of points defining the path along the wire
+    private Vector3 initialPosition; // Initial position of the particle emitter
     private InteractionController interactionController; // Reference to the InteractionController
 
     // Start is called before the first frame update
     void Start()
     {
         particleEmitter.SetActive(false); // Initially deactivate the particle emitter
-        CollectBoneTransforms(); // Collect the bone transforms
+        initialPosition = particleEmitter.transform.position; // Store the initial position
         interactionController = GetComponent<InteractionController>(); // Get the InteractionController component
     }
 
@@ -30,35 +30,42 @@ public class SparkGuide : MonoBehaviour
         }
     }
 
-    private void CollectBoneTransforms()
-    {
-        foreach (Transform bone in bonesParent)
-        {
-            pathPoints.Add(bone);
-        }
-    }
-
     private void ActivateParticleEmitter()
     {
         if (!isActivated)
         {
             isActivated = true;
             particleEmitter.SetActive(true); // Activate the particle emitter
-            StartCoroutine(MoveAlongPath());
+            StartCoroutine(MoveAlongRopes());
         }
     }
 
-    private IEnumerator MoveAlongPath()
+    private IEnumerator MoveAlongRopes()
     {
-        for (int i = 0; i < pathPoints.Count; i++)
+        foreach (Transform rope in ropesParent)
         {
-            while (Vector3.Distance(particleEmitter.transform.position, pathPoints[i].position) > 0.1f)
+            List<Transform> pathPoints = new List<Transform>();
+
+            foreach (Transform bone in rope)
             {
-                particleEmitter.transform.position = Vector3.MoveTowards(particleEmitter.transform.position, pathPoints[i].position, moveSpeed * Time.deltaTime);
-                yield return null;
+                pathPoints.Add(bone);
+            }
+
+            // Sort the pathPoints based on their distance from the initial position of the particle emitter
+            pathPoints.Sort((a, b) => Vector3.Distance(particleEmitter.transform.position, a.position).CompareTo(Vector3.Distance(particleEmitter.transform.position, b.position)));
+
+            for (int i = 0; i < pathPoints.Count; i++)
+            {
+                while (Vector3.Distance(particleEmitter.transform.position, pathPoints[i].position) > 0.1f)
+                {
+                    particleEmitter.transform.position = Vector3.MoveTowards(particleEmitter.transform.position, pathPoints[i].position, moveSpeed * Time.deltaTime);
+                    yield return null;
+                }
             }
         }
+
         particleEmitter.SetActive(false); // Deactivate the particle emitter after reaching the end
+        particleEmitter.transform.position = initialPosition; // Reset the position to the initial position
         isActivated = false; // Reset isActivated to false
     }
 }

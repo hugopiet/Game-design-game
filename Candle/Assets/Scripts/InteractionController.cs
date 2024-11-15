@@ -26,6 +26,7 @@ public class InteractionController : MonoBehaviour
     public bool useColorHighlight = true;
     public bool useParticles = true;
     public float highlightIntensity = 0.9f;
+    public float ParticleRadius = 10.5f;
 
     private void Start()
     {
@@ -159,7 +160,7 @@ public class InteractionController : MonoBehaviour
 
     var shape = highlightParticles.shape;
     shape.shapeType = ParticleSystemShapeType.Circle;
-    shape.radius = 10.5f;
+    shape.radius = ParticleRadius;
 
     highlightParticles.Stop();
 }
