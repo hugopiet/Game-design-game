@@ -13,6 +13,7 @@ public class InteractionController : MonoBehaviour
     public Transform player;
     public float interactionDistance = 8f;
     public InteractionType interactionType;
+    public bool enableKeyPressI = true; // Optional boolean to enable key press I
     public string informationText = "Default information text";
     public bool actionTriggered = false;
     
@@ -79,7 +80,7 @@ public class InteractionController : MonoBehaviour
 
     private void HandleInteraction()
     {
-        if (isInRange && Input.GetKeyDown(KeyCode.I))
+        if (isInRange && enableKeyPressI == Input.GetKeyDown(KeyCode.I))
         {
             switch (interactionType)
             {
