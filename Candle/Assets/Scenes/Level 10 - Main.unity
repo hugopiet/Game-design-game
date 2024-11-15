@@ -251,7 +251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 176f25e395e9c45908282608265f26ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 1722626455}
+  cam: {fileID: 3736339447339400393}
   parallaxEffect: -0.2
   tileable: 0
 --- !u!212 &80013899
@@ -1752,7 +1752,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 176f25e395e9c45908282608265f26ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 1722626455}
+  cam: {fileID: 3736339447339400393}
   parallaxEffect: 0.3
   tileable: 0
 --- !u!212 &813575862
@@ -2718,7 +2718,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 176f25e395e9c45908282608265f26ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 1722626455}
+  cam: {fileID: 3736339447339400393}
   parallaxEffect: 0.3
   tileable: 0
 --- !u!212 &1296975042
@@ -2818,7 +2818,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 176f25e395e9c45908282608265f26ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 1722626455}
+  cam: {fileID: 3736339447339400393}
   parallaxEffect: 0.3
   tileable: 0
 --- !u!212 &1395679290
@@ -3002,7 +3002,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 176f25e395e9c45908282608265f26ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 1722626455}
+  cam: {fileID: 3736339447339400393}
   parallaxEffect: -0.2
   tileable: 0
 --- !u!212 &1444905876
@@ -3320,11 +3320,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1722626455 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6448517200186738463, guid: 5f72232731cdf4046981cc6a696a1a6f, type: 3}
-  m_PrefabInstance: {fileID: 3736339447339400392}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1799503042
 GameObject:
   m_ObjectHideFlags: 0
@@ -3868,11 +3863,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8316306829294745581, guid: 5f72232731cdf4046981cc6a696a1a6f, type: 3}
+      propertyPath: m_BoundingShape2D
+      value: 
+      objectReference: {fileID: 120422237}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f72232731cdf4046981cc6a696a1a6f, type: 3}
+--- !u!1 &3736339447339400393 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6766569617343360397, guid: 5f72232731cdf4046981cc6a696a1a6f, type: 3}
+  m_PrefabInstance: {fileID: 3736339447339400392}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5197598005916984521
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3928,6 +3932,10 @@ PrefabInstance:
     - target: {fileID: 4564682889468209769, guid: df188741146c64942bfe51241716b1e0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6001619056379056223, guid: df188741146c64942bfe51241716b1e0, type: 3}
+      propertyPath: moveWithTransform
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6883198645770091528, guid: df188741146c64942bfe51241716b1e0, type: 3}
       propertyPath: player
