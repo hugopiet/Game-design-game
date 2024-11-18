@@ -21,6 +21,7 @@ public class Gnistfollow : MonoBehaviour
     public enum State { Follow, Position, Wait }
     public State currentState = State.Follow;
     private Vector3 targetPosition; // Target position for the Position state
+    private Vector3 followTargetPosition;
     private float waitCounter; // Counter for the Wait state
 
     private FootstepController footstepController;
@@ -75,6 +76,7 @@ public class Gnistfollow : MonoBehaviour
 
         void FollowPlayer()
     {
+        footstepController.StartWalking();
         // Calculate the distance between gnist and the player
         float distance = Vector3.Distance(transform.position, player.position);
 
@@ -85,22 +87,26 @@ public class Gnistfollow : MonoBehaviour
             float facingDirection = Mathf.Sign(player.localScale.x);
             
             // Calculate the opposite direction based on facing direction
-            Vector3 oppositeDirection = new Vector3(-facingDirection, 0, 0);
+            Vector3 oppositeDirection = new Vector3(-facingDirection , 0, 0);
             
             // Set target position on the opposite side of the player
-            targetPosition = player.position + (oppositeDirection * radius);
+            followTargetPosition = player.position + (oppositeDirection * radius);
+            
+            distance = Vector3.Distance(transform.position, followTargetPosition) + radius;
             
             // Move towards the opposite side position
-            Vector3 direction = (targetPosition - transform.position).normalized;
-            transform.position += direction * speed * Time.deltaTime;
+            //Vector3 direction = (targetPosition - transform.position).normalized;
+            //transform.position += direction * speed * Time.deltaTime;
         }
-        else
-        {
+        else{
+            followTargetPosition = player.position;
+        }
+        
             // Original follow behavior
-            if ((distance - radius) > 0.2f)
-            {
+           // if ((distance - radius) > 0.2f)
+            //{
                 // Calculate the direction to move towards the player
-                Vector3 direction = (player.position - transform.position).normalized;
+                Vector3 direction = (followTargetPosition - transform.position).normalized;
 
                 // Calculate the speed based on the distance
                 float adjustedSpeed = speed;
@@ -112,13 +118,15 @@ public class Gnistfollow : MonoBehaviour
                 // Move gnist towards the player
                 transform.position += direction * adjustedSpeed * Time.deltaTime;
                
-                footstepController.StartWalking();
-            }
-            else
+    
+            //}
+
+
+            if((distance - radius) < 0.2f)
             {
                 footstepController.StopWalking();
             }
-        }
+        
 
         // Regenerate stamina when within the follow radius
         if (distance <= radius + slowingDistance)
