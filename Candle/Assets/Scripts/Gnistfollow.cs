@@ -115,7 +115,7 @@ public class Gnistfollow : MonoBehaviour
                     adjustedSpeed = speed * (distance - radius) / slowingDistance;
                 }
 
-                if((followTargetPosition - transform.position).magnitude >= (player.position - transform.position).magnitude)
+                if((followTargetPosition - transform.position).magnitude >= (player.position - transform.position).magnitude && avoidBeingLookedAt)
                 {
                     adjustedSpeed = speed*5;
                 }
