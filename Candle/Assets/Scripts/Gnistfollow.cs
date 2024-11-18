@@ -14,6 +14,9 @@ public class Gnistfollow : MonoBehaviour
     public float staminaDepleteRate = 5.0f; // Rate of stamina depletion
     public float staminaDepleteRateFlameUp = 10.0f; // Rate of stamina depletion when flameUp is active
     public GnistStats gnistStats; // Reference to the GnistStats script
+    
+    // New public bool for avoiding being looked at
+    public bool avoidBeingLookedAt = false;
 
     public enum State { Follow, Position, Wait }
     public State currentState = State.Follow;
@@ -23,13 +26,11 @@ public class Gnistfollow : MonoBehaviour
     private FootstepController footstepController;
     public FlameUp flameUp;
 
-    // Update is called once per frame
-
     void Start()
     {
         footstepController = GetComponentInChildren<FootstepController>(); // Get the FootstepController component
-
     }
+
 
     void Update()
     {
@@ -37,10 +38,8 @@ public class Gnistfollow : MonoBehaviour
         if (!IsInView())
         {
             currentState = State.Follow;
-            //Debug.Log("Gnist exited camera view, state changed to Follow");
         }
 
-        //Debug.Log("Current State: " + currentState.ToString());
         switch (currentState)
         {
             case State.Follow:
@@ -74,39 +73,56 @@ public class Gnistfollow : MonoBehaviour
         }
     }
 
-    void FollowPlayer()
+        void FollowPlayer()
     {
-        //Debug.Log("Following player");
         // Calculate the distance between gnist and the player
         float distance = Vector3.Distance(transform.position, player.position);
 
-        // If the distance is greater than the radius, move gnist towards the player
-        if ((distance - radius)> 0.1f)
+        // If avoiding being looked at, calculate the opposite side position
+        if (avoidBeingLookedAt)
         {
-            // Calculate the direction to move towards the player
-            Vector3 direction = (player.position - transform.position).normalized;
-
-            // Calculate the speed based on the distance
-            float adjustedSpeed = speed;
-            if (distance < radius + slowingDistance)
-            {
-                adjustedSpeed = speed * (distance - radius) / slowingDistance;
-            }
-
-            // Move gnist towards the player
-            transform.position += direction * adjustedSpeed * Time.deltaTime;
-           
-            footstepController.StartWalking();
+            // Determine facing direction using the sign of the x scale
+            float facingDirection = Mathf.Sign(player.localScale.x);
+            
+            // Calculate the opposite direction based on facing direction
+            Vector3 oppositeDirection = new Vector3(-facingDirection, 0, 0);
+            
+            // Set target position on the opposite side of the player
+            targetPosition = player.position + (oppositeDirection * radius);
+            
+            // Move towards the opposite side position
+            Vector3 direction = (targetPosition - transform.position).normalized;
+            transform.position += direction * speed * Time.deltaTime;
         }
-        else{
+        else
+        {
+            // Original follow behavior
+            if ((distance - radius) > 0.2f)
+            {
+                // Calculate the direction to move towards the player
+                Vector3 direction = (player.position - transform.position).normalized;
 
-            footstepController.StopWalking();
+                // Calculate the speed based on the distance
+                float adjustedSpeed = speed;
+                if (distance < radius + slowingDistance)
+                {
+                    adjustedSpeed = speed * (distance - radius) / slowingDistance;
+                }
+
+                // Move gnist towards the player
+                transform.position += direction * adjustedSpeed * Time.deltaTime;
+               
+                footstepController.StartWalking();
+            }
+            else
+            {
+                footstepController.StopWalking();
+            }
         }
 
         // Regenerate stamina when within the follow radius
-        if (distance <= radius+slowingDistance)
+        if (distance <= radius + slowingDistance)
         {
-            //Debug.Log("Regenerating stamina... within radius");
             gnistStats.RegenerateStamina(staminaRegenRate * Time.deltaTime);
         }
     }
