@@ -115,6 +115,10 @@ public class Gnistfollow : MonoBehaviour
                     adjustedSpeed = speed * (distance - radius) / slowingDistance;
                 }
 
+                if((followTargetPosition - transform.position).magnitude >= (player.position - transform.position).magnitude)
+                {
+                    adjustedSpeed = speed*5;
+                }
                 // Move gnist towards the player
                 transform.position += direction * adjustedSpeed * Time.deltaTime;
                
