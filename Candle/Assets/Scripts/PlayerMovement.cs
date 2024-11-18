@@ -62,6 +62,11 @@ public class PlayerMovement : MonoBehaviour
             footstepController.StartWalking();
         }
     }
+    public float GetHorizontalInput()
+    {
+        return Input.GetAxis("Horizontal");
+    }
+
 
     public void OnLanding()
     {
