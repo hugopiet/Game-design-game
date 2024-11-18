@@ -6,6 +6,7 @@ public class DeactivationTrigger : MonoBehaviour
 {
     public Component componentToDeactivate; // The component to deactivate
     public float activationPeriod = 5f; // Time period after which the component is reactivated
+    public bool useTimer = true; // Boolean to enable or disable the timer
 
     private InteractionController interactionController; // Reference to the InteractionController
     private bool isDeactivating = false; // Flag to prevent multiple coroutines
@@ -45,20 +46,23 @@ public class DeactivationTrigger : MonoBehaviour
                 ((Renderer)componentToDeactivate).enabled = false;
             }
 
-            yield return new WaitForSeconds(activationPeriod); // Wait for the activation period
+            if (useTimer)
+            {
+                yield return new WaitForSeconds(activationPeriod); // Wait for the activation period
 
-            // Reactivate the component
-            if (componentToDeactivate is Behaviour)
-            {
-                ((Behaviour)componentToDeactivate).enabled = true;
-            }
-            else if (componentToDeactivate is Collider)
-            {
-                ((Collider)componentToDeactivate).enabled = true;
-            }
-            else if (componentToDeactivate is Renderer)
-            {
-                ((Renderer)componentToDeactivate).enabled = true;
+                // Reactivate the component
+                if (componentToDeactivate is Behaviour)
+                {
+                    ((Behaviour)componentToDeactivate).enabled = true;
+                }
+                else if (componentToDeactivate is Collider)
+                {
+                    ((Collider)componentToDeactivate).enabled = true;
+                }
+                else if (componentToDeactivate is Renderer)
+                {
+                    ((Renderer)componentToDeactivate).enabled = true;
+                }
             }
 
             interactionController.actionTriggered = false; // Reset the actionTriggered variable

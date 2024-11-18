@@ -13,7 +13,7 @@ public class InteractionController : MonoBehaviour
     public Transform player;
     public float interactionDistance = 8f;
     public InteractionType interactionType;
-    public bool enableKeyPressI = true; // Optional boolean to enable key press I
+    public bool enableKeyPress = true; // Optional boolean to enable key press I
     public string informationText = "Default information text";
     public bool actionTriggered = false;
     
@@ -22,6 +22,7 @@ public class InteractionController : MonoBehaviour
     private Color originalColor;
     private ParticleSystem highlightParticles;
     private bool isInRange = false;
+    private KeyCode interactionKey = KeyCode.I; // Default interaction key
 
     [Header("Visual Feedback")]
     public bool useColorHighlight = true;
@@ -42,6 +43,14 @@ public class InteractionController : MonoBehaviour
         }
 //!!!!!!!!!
         //highlightParticles.Play();
+        if (player.CompareTag("Player"))
+        {
+            interactionKey = KeyCode.I;
+        }
+        else if (player.CompareTag("Gnist"))
+        {
+            interactionKey = KeyCode.F;
+        }
     }
 
     private void Update()
@@ -80,7 +89,7 @@ public class InteractionController : MonoBehaviour
 
     private void HandleInteraction()
     {
-        if (isInRange && enableKeyPressI == Input.GetKeyDown(KeyCode.I))
+        if (isInRange && enableKeyPress == Input.GetKeyDown(interactionKey))
         {
             switch (interactionType)
             {
