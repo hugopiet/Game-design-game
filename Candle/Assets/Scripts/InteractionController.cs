@@ -49,6 +49,11 @@ public class InteractionController : MonoBehaviour
         }
 //!!!!!!!!!
         //highlightParticles.Play();
+
+        if (!player.CompareTag("Gnist"))
+        {
+            actionDistance = interactionDistance;
+        }
         
     }
 
