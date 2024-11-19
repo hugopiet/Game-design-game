@@ -18,12 +18,15 @@ public class InteractionController : MonoBehaviour
     public bool enableKeyPress = true; // Optional boolean to enable key press I
     public string informationText = "Default information text";
     public bool actionTriggered = false;
+    public bool actionRepeatable = true; // Boolean to determine if the action is repeatable
+
     
     // References
     private SpriteRenderer sprite;
     private Color originalColor;
     private ParticleSystem highlightParticles;
     private bool isInRange = false;
+    private bool isInInteractionRange = false;
     private bool actionTrigger = false;
     private KeyCode interactionKey = KeyCode.I; // Default interaction key
 
@@ -86,7 +89,7 @@ public class InteractionController : MonoBehaviour
     private void HandleInteraction()
     {
         float distance = Vector3.Distance(transform.position, player.position);
-        isInRange = distance <= actionDistance;
+        isInInteractionRange = distance <= actionDistance;
         Debug.Log("isInRange: " + isInRange);
         actionTrigger = false;
 
@@ -108,7 +111,7 @@ public class InteractionController : MonoBehaviour
             
         }
 
-        if (isInRange && actionTrigger)
+        if (isInInteractionRange && actionTrigger)
         {
             switch (interactionType)
             {
@@ -119,6 +122,22 @@ public class InteractionController : MonoBehaviour
                     TriggerAction();
                     break;
             }
+        }
+        
+        if (!actionRepeatable && actionTriggered)
+        {
+            //OnExitRange();
+            if (useColorHighlight)
+            {
+                sprite.color = originalColor;
+            }
+
+            if (useParticles && highlightParticles != null)
+            {
+                highlightParticles.Stop();
+            }
+
+            enabled = false; // Deactivate the script
         }
     
     }
