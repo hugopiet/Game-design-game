@@ -3029,7 +3029,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: 16174b041745f42448e2ab021dc3f5b1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3151,9 +3151,10 @@ MonoBehaviour:
   player: {fileID: 1928758576}
   interactionDistance: 15
   interactionType: 1
-  enableKeyPressI: 1
+  enableKeyPress: 1
   informationText: Default information text
   actionTriggered: 0
+  actionRepeatable: 1
   useColorHighlight: 1
   useParticles: 1
   highlightIntensity: 0.9
@@ -3889,7 +3890,7 @@ MonoBehaviour:
   gnistStats: {fileID: 307857352}
   player: {fileID: 1928758576}
   balloon: {fileID: 1417477844}
-  hoverHeight: 10
+  hoverHeight: {x: 0.3, y: 7.5, z: 0}
   moveSpeed: 5
   smoothTime: 0.3
 --- !u!61 &2141944869
@@ -4192,11 +4193,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55763cad1565f40539e1b0511a2b3733, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flappySprite: {fileID: 21300000, guid: 60f698e9c2438404bb870b8117108fa0, type: 3}
   spriteRenderer: {fileID: 0}
+  flappySprite: {fileID: 21300000, guid: e3c8d6071f96e4e9095c3e4a35214f24, type: 3}
+  balloonSpriteRenderer: {fileID: 1417477843}
+  flappyBalloonSprite: {fileID: 21300000, guid: 373e836c3c0e5445ca592552eb1a34d6, type: 3}
   flapForce: 5
   reducedGravityScale: 1.1
   breezeForce: 2
+  balloonOffset: {x: 0, y: 1, z: 0}
 --- !u!1001 &5197598005916984521
 PrefabInstance:
   m_ObjectHideFlags: 0

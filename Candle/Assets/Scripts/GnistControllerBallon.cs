@@ -3,6 +3,7 @@ using UnityEngine;
 public class GnistControllerBallon : MonoBehaviour
 {
     private Gnistfollow gnistFollow;
+    private FlameUp flameUp;
     private bool isInTriggerZone = false;
     public GnistStats gnistStats;
     private InteractionController interactionController;
@@ -11,7 +12,7 @@ public class GnistControllerBallon : MonoBehaviour
     [Header("Hover Settings")]
     public Transform player;
     public Transform balloon;           // Reference to BalloonZone
-    public float hoverHeight = 3f;
+    public Vector3 hoverHeight = new Vector2(0, 1);
     public float moveSpeed = 5f;
     public float smoothTime = 0.3f;
 
@@ -28,6 +29,8 @@ public class GnistControllerBallon : MonoBehaviour
     void Start()
     {
         gnistFollow = GetComponent<Gnistfollow>();
+        gnistStats = GetComponent<GnistStats>();
+        flameUp = GetComponent<FlameUp>();
         currentState = BalloonState.HoverMode;
 
         if (player == null)
@@ -42,6 +45,9 @@ public class GnistControllerBallon : MonoBehaviour
         if (isInTriggerZone && (gnistStats.flameUp.flameUp || continueThisScript))
         {
             gnistFollow.enabled = false;
+            gnistStats.enabled = false;
+            flameUp.enabled = false;
+            
             balloon.position = transform.position;
             continueThisScript = true; 
 
@@ -55,11 +61,14 @@ public class GnistControllerBallon : MonoBehaviour
                         currentState = BalloonState.FlappyMode;
                         // FlappyMode behavior to be defined later
                     }
+                    else{
+                        Debug.Log("Not in Flappy Mode");
+                    }
                     break;
 
                 case BalloonState.FlappyMode:
                     // FlappyMode behavior not defined yet
-                    targetPosition = new Vector2(player.position.x, player.position.y + hoverHeight);
+                    targetPosition = player.transform.position + hoverHeight;
                     transform.position = targetPosition;
 
                     break;
@@ -70,12 +79,14 @@ public class GnistControllerBallon : MonoBehaviour
         else
         {
             gnistFollow.enabled = true;
+            gnistStats.enabled = true;
+            flameUp.enabled = true;
         }
     }
 
     void HoverOverPlayer()
     {
-        targetPosition = new Vector2(player.position.x, player.position.y + hoverHeight);
+        targetPosition = new Vector2(player.position.x, player.position.y + hoverHeight.y);
         transform.position = Vector2.SmoothDamp(
             transform.position,
             targetPosition,
@@ -84,6 +95,7 @@ public class GnistControllerBallon : MonoBehaviour
             moveSpeed
         );
         balloon.position = transform.position;
+        
     }
 
     void OnTriggerEnter2D(Collider2D other)
