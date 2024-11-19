@@ -178,8 +178,9 @@ public class InteractionController : MonoBehaviour
     private void ShowInformation()
     {
         //Debug.Log($"Showing information: {informationText}");
-        
-        InfoBubbleManager.Instance.ShowInfoBubble(informationText);
+        int levelIndex;
+        if (int.TryParse(gameObject.name, out levelIndex))
+        InfoBubbleManager.Instance.ShowInfoBubble($"level {gameObject.name}", levelIndex);
     }
 
     private void TriggerAction()

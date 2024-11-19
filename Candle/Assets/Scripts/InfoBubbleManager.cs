@@ -5,6 +5,9 @@ using TMPro;
 public class InfoBubbleManager : MonoBehaviour
 {
     public static InfoBubbleManager Instance { get; private set; }
+    public Button playLevelButton;  // Reference to the button
+    public TextMeshProUGUI buttonText;  // Reference to the button's text
+
 
     [Header("UI References")]
     public GameObject infoBubblePanel;
@@ -31,11 +34,14 @@ public class InfoBubbleManager : MonoBehaviour
         HideInfoBubble(true);
     }
 
-    public void ShowInfoBubble(string text)
+    public void ShowInfoBubble(string text, int levelIndex)
     {
         infoBubblePanel.SetActive(true);
         infoText.text = text;
+        PlayLevelButton.gameObject.SetActive(true); // Show the button
+        buttonText.text = "Play Level" + levelIndex; // Set the button text dynamically
         StartCoroutine(FadeIn());
+
     }
 
     public void HideInfoBubble(bool immediate = false)
