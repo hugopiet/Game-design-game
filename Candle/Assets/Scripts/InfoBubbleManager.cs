@@ -5,14 +5,16 @@ using TMPro;
 public class InfoBubbleManager : MonoBehaviour
 {
     public static InfoBubbleManager Instance { get; private set; }
-    public Button playLevelButton;  // Reference to the button
-    public TextMeshProUGUI buttonText;  // Reference to the button's text
-
+   
 
     [Header("UI References")]
     public GameObject infoBubblePanel;
     public TextMeshProUGUI infoText;
     public Image dimOverlay;
+    public Button PlayLevelButton;  // Reference to the button
+    public TextMeshProUGUI buttonText;  // Reference to the button's text
+    private DynamicButton dynamicButton; // Reference to the button's script
+
     
     [Header("Animation Settings")]
     public float fadeInDuration = 0.3f;
@@ -32,6 +34,8 @@ public class InfoBubbleManager : MonoBehaviour
 
         // Ensure UI is hidden at start
         HideInfoBubble(true);
+
+        dynamicButton = PlayLevelButton.GetComponent<DynamicButton>();
     }
 
     public void ShowInfoBubble(string text, int levelIndex)
@@ -39,7 +43,16 @@ public class InfoBubbleManager : MonoBehaviour
         infoBubblePanel.SetActive(true);
         infoText.text = text;
         PlayLevelButton.gameObject.SetActive(true); // Show the button
-        buttonText.text = "Play Level" + levelIndex; // Set the button text dynamically
+        buttonText.text = "Play Level " + levelIndex; // Set the button text dynamically
+        
+        // Pass the levelIndex to the button's DynamicButton script
+        dynamicButton.SetLevelIndex(levelIndex);
+
+        // Assign the LoadSpecificScene method dynamically to the OnClick listener
+        PlayLevelButton.onClick.RemoveAllListeners();
+        PlayLevelButton.onClick.AddListener(dynamicButton.LoadSpecificScene);
+
+
         StartCoroutine(FadeIn());
 
     }
