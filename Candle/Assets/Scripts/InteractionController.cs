@@ -90,7 +90,7 @@ public class InteractionController : MonoBehaviour
     {
         float distance = Vector3.Distance(transform.position, player.position);
         isInInteractionRange = distance <= actionDistance;
-        Debug.Log("isInRange: " + isInRange);
+        //Debug.Log("isInRange: " + isInRange);
         actionTrigger = false;
 
         if (player.CompareTag("Gnist"))
