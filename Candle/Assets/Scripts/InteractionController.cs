@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public enum InteractionType
@@ -12,6 +13,7 @@ public class InteractionController : MonoBehaviour
 {
     public Transform player;
     public float interactionDistance = 8f;
+    private float actionDistance = 5f;
     public InteractionType interactionType;
     public bool enableKeyPress = true; // Optional boolean to enable key press I
     public string informationText = "Default information text";
@@ -22,6 +24,7 @@ public class InteractionController : MonoBehaviour
     private Color originalColor;
     private ParticleSystem highlightParticles;
     private bool isInRange = false;
+    private bool actionTrigger = false;
     private KeyCode interactionKey = KeyCode.I; // Default interaction key
 
     [Header("Visual Feedback")]
@@ -43,14 +46,7 @@ public class InteractionController : MonoBehaviour
         }
 //!!!!!!!!!
         //highlightParticles.Play();
-        if (player.CompareTag("Player"))
-        {
-            interactionKey = KeyCode.I;
-        }
-        else if (player.CompareTag("Gnist"))
-        {
-            interactionKey = KeyCode.F;
-        }
+        
     }
 
     private void Update()
@@ -89,7 +85,30 @@ public class InteractionController : MonoBehaviour
 
     private void HandleInteraction()
     {
-        if (isInRange && enableKeyPress == Input.GetKeyDown(interactionKey))
+        float distance = Vector3.Distance(transform.position, player.position);
+        isInRange = distance <= actionDistance;
+        Debug.Log("isInRange: " + isInRange);
+        actionTrigger = false;
+
+        if (player.CompareTag("Gnist"))
+        {
+            FlameUp flameUpScript = player.GetComponent<FlameUp>();
+            if (flameUpScript != null && flameUpScript.flameUp)
+            {
+                actionTrigger = true;
+                Debug.Log("FlameUp is true");
+            }
+        }
+        else
+        {
+            if (enableKeyPress == Input.GetKeyDown(interactionKey))
+            {
+                actionTrigger = true;
+            }
+            
+        }
+
+        if (isInRange && actionTrigger)
         {
             switch (interactionType)
             {
@@ -101,6 +120,7 @@ public class InteractionController : MonoBehaviour
                     break;
             }
         }
+    
     }
 
     private void OnEnterRange()
