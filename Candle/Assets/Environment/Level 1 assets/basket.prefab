@@ -131,6 +131,7 @@ MonoBehaviour:
   moveSpeed: 5
   leftBoundX: 135
   rightBoundX: 188
+  requiresPlayer: 1
 --- !u!114 &3734568834933896908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,8 +171,8 @@ Transform:
   m_GameObject: {fileID: 2016207368483050810}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.005, y: 0.548, z: 0}
-  m_LocalScale: {x: 0.10215235, y: 0.049830418, z: 0.10215235}
+  m_LocalPosition: {x: 0.003, y: 0.495, z: 0}
+  m_LocalScale: {x: 0.27767357, y: 0.13545054, z: 0.27767357}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6230492610214083606}
@@ -392,7 +393,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.1, y: 1.1}
   m_EdgeRadius: 0
 --- !u!61 &4701147495079723699
 BoxCollider2D:
