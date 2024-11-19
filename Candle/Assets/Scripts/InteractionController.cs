@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public enum InteractionType
@@ -12,16 +13,22 @@ public class InteractionController : MonoBehaviour
 {
     public Transform player;
     public float interactionDistance = 8f;
+    private float actionDistance = 5f;
     public InteractionType interactionType;
-    public bool enableKeyPressI = true; // Optional boolean to enable key press I
+    public bool enableKeyPress = true; // Optional boolean to enable key press I
     public string informationText = "Default information text";
     public bool actionTriggered = false;
+    public bool actionRepeatable = true; // Boolean to determine if the action is repeatable
+
     
     // References
     private SpriteRenderer sprite;
     private Color originalColor;
     private ParticleSystem highlightParticles;
     private bool isInRange = false;
+    private bool isInInteractionRange = false;
+    private bool actionTrigger = false;
+    private KeyCode interactionKey = KeyCode.I; // Default interaction key
 
     [Header("Visual Feedback")]
     public bool useColorHighlight = true;
@@ -42,6 +49,12 @@ public class InteractionController : MonoBehaviour
         }
 //!!!!!!!!!
         //highlightParticles.Play();
+
+        if (!player.CompareTag("Gnist"))
+        {
+            actionDistance = interactionDistance;
+        }
+        
     }
 
     private void Update()
@@ -80,7 +93,30 @@ public class InteractionController : MonoBehaviour
 
     private void HandleInteraction()
     {
-        if (isInRange && enableKeyPressI == Input.GetKeyDown(KeyCode.I))
+        float distance = Vector3.Distance(transform.position, player.position);
+        isInInteractionRange = distance <= actionDistance;
+        //Debug.Log("isInRange: " + isInRange);
+        actionTrigger = false;
+
+        if (player.CompareTag("Gnist"))
+        {
+            FlameUp flameUpScript = player.GetComponent<FlameUp>();
+            if (flameUpScript != null && flameUpScript.flameUp)
+            {
+                actionTrigger = true;
+                Debug.Log("FlameUp is true");
+            }
+        }
+        else
+        {
+            if (enableKeyPress == Input.GetKeyDown(interactionKey))
+            {
+                actionTrigger = true;
+            }
+            
+        }
+
+        if (isInInteractionRange && actionTrigger)
         {
             switch (interactionType)
             {
@@ -92,6 +128,23 @@ public class InteractionController : MonoBehaviour
                     break;
             }
         }
+        
+        if (!actionRepeatable && actionTriggered)
+        {
+            //OnExitRange();
+            if (useColorHighlight)
+            {
+                sprite.color = originalColor;
+            }
+
+            if (useParticles && highlightParticles != null)
+            {
+                highlightParticles.Stop();
+            }
+
+            enabled = false; // Deactivate the script
+        }
+    
     }
 
     private void OnEnterRange()

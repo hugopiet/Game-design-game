@@ -5,7 +5,6 @@ using TMPro;
 public class InfoBubbleManager : MonoBehaviour
 {
     public static InfoBubbleManager Instance { get; private set; }
-   
 
     [Header("UI References")]
     public GameObject infoBubblePanel;
