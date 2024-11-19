@@ -5,7 +5,7 @@ using TMPro;
 public class InfoBubbleManager : MonoBehaviour
 {
     public static InfoBubbleManager Instance { get; private set; }
-    public Button playLevelButton;  // Reference to the button
+    public Button PlayLevelButton;  // Reference to the button
     public TextMeshProUGUI buttonText;  // Reference to the button's text
 
 
