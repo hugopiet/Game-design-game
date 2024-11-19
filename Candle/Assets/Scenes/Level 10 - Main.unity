@@ -1260,6 +1260,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 67.321}
+--- !u!1 &420045169 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6448517200186738463, guid: 5f72232731cdf4046981cc6a696a1a6f, type: 3}
+  m_PrefabInstance: {fileID: 3736339447339400392}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &420045176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 420045169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c11265b855408d42af33d62691f5194, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ChannelMask: -1
+  m_Gain: 1
+  m_Use2DDistance: 1
+  m_UseLocalSpace: 1
+  m_ReactionSettings:
+    m_SecondaryNoise: {fileID: 11400000, guid: a3dacaec0287d7444b4bd276816e1666, type: 2}
+    m_AmplitudeGain: 0
+    m_FrequencyGain: 1
+    m_Duration: 1
+    m_NoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!4 &425263077 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5680164032171296414, guid: 027786c21073d084fb101d52f2396ed0, type: 3}
@@ -4047,6 +4074,66 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.2473664, y: 15.111783}
   m_EdgeRadius: 0
+--- !u!114 &2141944878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2141944856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd438dd108a0f284aa931a2da434f1d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ImpulseDefinition:
+    m_ImpulseChannel: -1
+    m_ImpulseShape: 3
+    m_CustomImpulseShape:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ImpulseDuration: 0.2
+    m_ImpulseType: 1
+    m_DissipationRate: 0.065
+    m_RawSignal: {fileID: 0}
+    m_AmplitudeGain: 1
+    m_FrequencyGain: 1
+    m_RepeatMode: 0
+    m_Randomize: 1
+    m_TimeEnvelope:
+      m_AttackShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_DecayShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_AttackTime: 0
+      m_SustainTime: 0.2
+      m_DecayTime: 0.7
+      m_ScaleWithImpact: 1
+      m_HoldForever: 0
+    m_ImpactRadius: 100
+    m_DirectionMode: 0
+    m_DissipationMode: 2
+    m_DissipationDistance: 100
+    m_PropagationSpeed: 343
+  m_DefaultVelocity: {x: -0.3, y: 0, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_IgnoreTag: 
+  m_UseImpactDirection: 0
+  m_ScaleImpactWithMass: 0
+  m_ScaleImpactWithSpeed: 0
 --- !u!1001 &106225236526365716
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4288,6 +4375,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6766569617343360397, guid: 5f72232731cdf4046981cc6a696a1a6f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3736339447339400411}
+    - targetCorrespondingSourceObject: {fileID: 6448517200186738463, guid: 5f72232731cdf4046981cc6a696a1a6f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 420045176}
   m_SourcePrefab: {fileID: 100100000, guid: 5f72232731cdf4046981cc6a696a1a6f, type: 3}
 --- !u!1 &3736339447339400393 stripped
 GameObject:
@@ -4398,6 +4488,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Gnist
       objectReference: {fileID: 0}
+    - target: {fileID: 8742586891227706898, guid: df188741146c64942bfe51241716b1e0, type: 3}
+      propertyPath: m_Name
+      value: FlameUpParticles
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4408,6 +4502,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7742417119977072897, guid: df188741146c64942bfe51241716b1e0, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2141944869}
+    - targetCorrespondingSourceObject: {fileID: 7742417119977072897, guid: df188741146c64942bfe51241716b1e0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2141944878}
   m_SourcePrefab: {fileID: 100100000, guid: df188741146c64942bfe51241716b1e0, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

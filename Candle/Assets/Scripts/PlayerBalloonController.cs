@@ -15,7 +15,7 @@ public class PlayerBalloonController : MonoBehaviour
     private Sprite originalSprite;
     private Animator animator;
     private Sprite originalBalloonSprite;
-
+    
     
     [Header("Player")]
     public SpriteRenderer spriteRenderer;
@@ -130,8 +130,13 @@ public class PlayerBalloonController : MonoBehaviour
         {
             // Apply upward force
             rb.AddForce(new Vector2(0, flapForce), ForceMode2D.Impulse);
-            
+
         }
         rb.velocity = new Vector2(-breezeForce, rb.velocity.y); // Apply breeze force
     }
+
+
+  
+
+
 }
