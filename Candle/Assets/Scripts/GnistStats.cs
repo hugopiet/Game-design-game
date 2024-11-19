@@ -14,7 +14,10 @@ public class GnistStats : MonoBehaviour
     void Start()
     {
         currentStamina = maxStamina;
-        healthBar.SetMaxStamina(maxStamina); // Use the instance reference
+        if (healthBar != null)
+        {
+            healthBar.SetMaxStamina(maxStamina); // Use the instance reference
+        }
     }
 
     void Update()
@@ -22,7 +25,10 @@ public class GnistStats : MonoBehaviour
         //Debug.Log("FlameUp: " + flameUp.flameUp);
 
         // Update the health bar using the instance reference
-        healthBar.SetStamina(currentStamina);
+        if (healthBar != null)
+        {
+            healthBar.SetStamina(currentStamina);
+        }
     }
 
     public void RegenerateStamina(float amount)
@@ -31,6 +37,10 @@ public class GnistStats : MonoBehaviour
         {
             currentStamina += amount;
             currentStamina = Mathf.Clamp(currentStamina, 0f, maxStamina);
+            if (healthBar != null)
+            {
+                healthBar.SetStamina(currentStamina);
+            }
         }
     }
 
@@ -38,5 +48,9 @@ public class GnistStats : MonoBehaviour
     {
         currentStamina -= amount;
         currentStamina = Mathf.Clamp(currentStamina, 0f, maxStamina);
+        if (healthBar != null)
+        {
+            healthBar.SetStamina(currentStamina);
+        }
     }
 }
