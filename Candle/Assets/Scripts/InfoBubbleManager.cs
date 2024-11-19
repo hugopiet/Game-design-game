@@ -44,8 +44,11 @@ public class InfoBubbleManager : MonoBehaviour
         PlayLevelButton.gameObject.SetActive(true); // Show the button
         buttonText.text = "Play Level " + levelIndex; // Set the button text dynamically
         
-        // Pass the levelIndex to the button's DynamicButton script
-        dynamicButton.SetLevelIndex(levelIndex);
+        if (levelIndex == 1 || levelIndex == 10)
+        {
+            dynamicButton.SetLevelIndex(levelIndex);
+        }
+
 
         // Assign the LoadSpecificScene method dynamically to the OnClick listener
         PlayLevelButton.onClick.RemoveAllListeners();

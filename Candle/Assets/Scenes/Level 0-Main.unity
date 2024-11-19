@@ -11987,9 +11987,10 @@ MonoBehaviour:
   player: {fileID: 1638184922}
   interactionDistance: 14
   interactionType: 0
-  enableKeyPressI: 1
+  enableKeyPress: 1
   informationText: Default information text
   actionTriggered: 0
+  actionRepeatable: 1
   useColorHighlight: 1
   useParticles: 1
   highlightIntensity: 0.9
@@ -12416,9 +12417,10 @@ MonoBehaviour:
   player: {fileID: 1638184922}
   interactionDistance: 14
   interactionType: 0
-  enableKeyPressI: 1
+  enableKeyPress: 1
   informationText: 'Default information text : flistblob'
   actionTriggered: 0
+  actionRepeatable: 1
   useColorHighlight: 1
   useParticles: 1
   highlightIntensity: 0.9
@@ -12433,11 +12435,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1286481431237680654, guid: 5f72232731cdf4046981cc6a696a1a6f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 28.946503
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1286481431237680654, guid: 5f72232731cdf4046981cc6a696a1a6f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.200399
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1286481431237680654, guid: 5f72232731cdf4046981cc6a696a1a6f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 3975568521845859152, guid: 5f72232731cdf4046981cc6a696a1a6f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -12600,9 +12606,10 @@ MonoBehaviour:
   player: {fileID: 1638184922}
   interactionDistance: 14
   interactionType: 0
-  enableKeyPressI: 1
+  enableKeyPress: 1
   informationText: 
   actionTriggered: 0
+  actionRepeatable: 1
   useColorHighlight: 1
   useParticles: 1
   highlightIntensity: 0.9
@@ -17889,9 +17896,10 @@ MonoBehaviour:
   player: {fileID: 1638184922}
   interactionDistance: 14
   interactionType: 0
-  enableKeyPressI: 1
+  enableKeyPress: 1
   informationText: Default information text
   actionTriggered: 0
+  actionRepeatable: 1
   useColorHighlight: 1
   useParticles: 1
   highlightIntensity: 0.9
@@ -18064,9 +18072,10 @@ MonoBehaviour:
   player: {fileID: 1638184922}
   interactionDistance: 14
   interactionType: 0
-  enableKeyPressI: 1
+  enableKeyPress: 1
   informationText: Default information text
   actionTriggered: 0
+  actionRepeatable: 1
   useColorHighlight: 1
   useParticles: 1
   highlightIntensity: 0.9
@@ -18090,6 +18099,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transition: {fileID: 1056286829}
   transitionTime: 7
+  transistionTime_withoutGnist: 5
 --- !u!1 &1475256643
 GameObject:
   m_ObjectHideFlags: 0
@@ -23586,9 +23596,10 @@ MonoBehaviour:
   player: {fileID: 1638184922}
   interactionDistance: 14
   interactionType: 0
-  enableKeyPressI: 1
+  enableKeyPress: 1
   informationText: 'Default information text: gutenberg'
   actionTriggered: 0
+  actionRepeatable: 1
   useColorHighlight: 1
   useParticles: 1
   highlightIntensity: 0.9
@@ -28701,9 +28712,10 @@ MonoBehaviour:
   player: {fileID: 1638184922}
   interactionDistance: 14
   interactionType: 0
-  enableKeyPressI: 1
+  enableKeyPress: 1
   informationText: 'Default information text: pharao'
   actionTriggered: 0
+  actionRepeatable: 1
   useColorHighlight: 1
   useParticles: 1
   highlightIntensity: 0.8
@@ -34510,6 +34522,10 @@ PrefabInstance:
     - target: {fileID: 20935328520462654, guid: ee2cfcdf3fa6fa14b9b94c32d82ad43e, type: 3}
       propertyPath: m_BlocksRaycasts
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 355027355287396025, guid: ee2cfcdf3fa6fa14b9b94c32d82ad43e, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 1238121861258192576, guid: ee2cfcdf3fa6fa14b9b94c32d82ad43e, type: 3}
       propertyPath: m_LocalPosition.x
