@@ -8,6 +8,7 @@ public class SceneController : MonoBehaviour
     // public string sceneName; // Optional: If you want to specify the scene name manually
     public Animator transition; // Animator for the transition
     public float transitionTime = 10f; // Time for the transition effect
+    public float transistionTime_withoutGnist = 5f;
 
     // public TextMeshProUGUI buttonText;  // Reference to the button's text
     // Public method to load the next level
@@ -50,7 +51,7 @@ public class SceneController : MonoBehaviour
         gnist = false;
         }
         else {
-             yield return new WaitForSeconds(5f);
+             yield return new WaitForSeconds(transistionTime_withoutGnist);
 
         }
 
