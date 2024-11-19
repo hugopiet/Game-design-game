@@ -6135,6 +6135,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &466942069 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6766569617343360397, guid: 5f72232731cdf4046981cc6a696a1a6f, type: 3}
+  m_PrefabInstance: {fileID: 44136874}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &474565824
 GameObject:
   m_ObjectHideFlags: 0
@@ -8904,7 +8909,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 176f25e395e9c45908282608265f26ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 1424251790}
+  cam: {fileID: 466942069}
   parallaxEffect: -0.2
   tileable: 0
 --- !u!1001 &646146191
@@ -18026,8 +18031,8 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: -57.78083, y: 92.35975}
-      - {x: -57.243393, y: -24.00392}
-      - {x: 76.11041, y: -23.51921}
+      - {x: -57.243393, y: -25.106737}
+      - {x: 76.583046, y: -25.252213}
       - {x: 83.80619, y: -44.70974}
       - {x: 93.74074, y: -59.495693}
       - {x: 217.28142, y: -72.223045}
@@ -20769,6 +20774,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 818658804}
+    - target: {fileID: 6883198645770091528, guid: df188741146c64942bfe51241716b1e0, type: 3}
+      propertyPath: avoidBeingLookedAt
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7742417119977072897, guid: df188741146c64942bfe51241716b1e0, type: 3}
       propertyPath: m_Name
       value: Gnist
