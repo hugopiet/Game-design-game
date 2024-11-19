@@ -38,11 +38,22 @@ public class PlayerBalloonController : MonoBehaviour
         // Check if under Gnist and action is triggered
         if (underGnist && interactionController != null && interactionController.actionTriggered)
         {
-            spriteRenderer.sprite = flappySprite; // Change sprite to flappySprite
             cc2D.enabled = false; // Disable default controller
             playerMovement.enabled = false; // Disable default player movement
 
             FlappyMode();
+        }
+
+        if(Input.GetKeyDown(KeyCode.K))
+        {
+            Debug.Log("Esc key pressed");
+            spriteRenderer.sprite = originalSprite; // Reset sprite
+            playerMovement.enabled = true; // Re-enable default player movement 
+            cc2D.enabled = true; // Re-enable default controller
+            interactionController.actionTriggered = false;  // Reset actionTriggered
+            interactionController = null;
+            rb.gravityScale = originalGravityScale; // Reset gravity
+
         }
     }
 

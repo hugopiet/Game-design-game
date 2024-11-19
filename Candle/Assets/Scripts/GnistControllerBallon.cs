@@ -106,4 +106,7 @@ public class GnistControllerBallon : MonoBehaviour
             gnistFollow.enabled = true;
         }
     }
+
+
+
 }
