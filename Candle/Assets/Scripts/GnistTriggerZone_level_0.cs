@@ -4,6 +4,7 @@ public class GnistTriggerZone_level_0 : MonoBehaviour
 {
     public Gnistfollow_level_0 gnist;
     public SceneController sceneController;
+    private bool gnist_bool = true;
 
     private void Start()
     {
@@ -21,7 +22,7 @@ public class GnistTriggerZone_level_0 : MonoBehaviour
             {
                 gnist.SetFollowState();
                 Debug.Log("Follow state set on Gnist");
-                sceneController.LoadNextLevel();
+                sceneController.LoadNextLevel(gnist_bool);
             }
             else
             {

@@ -9,15 +9,30 @@ public class SceneController : MonoBehaviour
     public Animator transition; // Animator for the transition
     public float transitionTime = 10f; // Time for the transition effect
 
+    // public TextMeshProUGUI buttonText;  // Reference to the button's text
     // Public method to load the next level
-    public void LoadNextLevel()
+    public void LoadNextLevel(bool gnist)
     {
         Debug.Log("loadNextLevel");
-        StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
+        StartCoroutine(LoadLevel((SceneManager.GetActiveScene().buildIndex + 1), gnist));
+    }
+
+    public void LoadSpecificLevel(int levelIndex) {
+        bool gnist = false;
+           if (InfoBubbleManager.Instance != null)
+        {
+            InfoBubbleManager.Instance.HideInfoBubble(true); // Immediate hide
+        }
+        Debug.Log("Loading level with index: " + levelIndex);
+        if (levelIndex == 10) {
+            levelIndex = 2;
+        }
+        StartCoroutine(LoadLevel(levelIndex, gnist)); // Load the level passed from the button click
     }
 
     // Coroutine to handle the transition and scene loading
-    private IEnumerator LoadLevel(int levelIndex)
+    private IEnumerator LoadLevel(int levelIndex, bool gnist)
+
     {
         // Play the transition animation
         if (transition != null)
@@ -30,7 +45,14 @@ public class SceneController : MonoBehaviour
         }
 
         // Wait for the transition to complete
+        if (gnist) {
         yield return new WaitForSeconds(transitionTime);
+        gnist = false;
+        }
+        else {
+             yield return new WaitForSeconds(5f);
+
+        }
 
         // Load the next scene
         SceneManager.LoadScene(levelIndex);
