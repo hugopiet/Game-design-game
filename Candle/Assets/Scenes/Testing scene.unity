@@ -375,6 +375,7 @@ MonoBehaviour:
   enableKeyPress: 0
   informationText: Default information text
   actionTriggered: 0
+  actionRepeatable: 0
   useColorHighlight: 1
   useParticles: 1
   highlightIntensity: 0.6
@@ -587,11 +588,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3975568521845859152, guid: 5f72232731cdf4046981cc6a696a1a6f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 132.75212
+      value: 189.2
       objectReference: {fileID: 0}
     - target: {fileID: 3975568521845859152, guid: 5f72232731cdf4046981cc6a696a1a6f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.1071906
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 3975568521845859152, guid: 5f72232731cdf4046981cc6a696a1a6f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1187,11 +1188,11 @@ PrefabInstance:
       objectReference: {fileID: 1379626365}
     - target: {fileID: 4564682889468209769, guid: df188741146c64942bfe51241716b1e0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 119.1
+      value: 175.54788
       objectReference: {fileID: 0}
     - target: {fileID: 4564682889468209769, guid: df188741146c64942bfe51241716b1e0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 13.9
+      value: 8.992809
       objectReference: {fileID: 0}
     - target: {fileID: 4564682889468209769, guid: df188741146c64942bfe51241716b1e0, type: 3}
       propertyPath: m_LocalPosition.z
