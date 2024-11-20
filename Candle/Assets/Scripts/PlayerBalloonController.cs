@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using System.Linq;
 
 //the idea is that the player has to get the balloon by activating 
 //gnist. the balloon will then come to the player, and the player can
@@ -26,12 +26,14 @@ public class PlayerBalloonController : MonoBehaviour
     public SpriteRenderer balloonSpriteRenderer;
     public Sprite flappyBalloonSprite;
 
+    private Rigidbody2D newColliderRb;
 
     [Header("Flappy Mode Settings")]
     public float flapForce = 5f;             // Upward impulse force
     public float reducedGravityScale = 0.5f; // Reduced gravity during FlappyMode
     private float originalGravityScale;      // To store the original gravity scale
-    public float breezeForce = 2f; 
+    public float breezeForce = 0.2f; 
+    public BoxCollider2D newOverallCollider;
 
     public Vector3 balloonOffset = new Vector3(0, 1, 0);
     void Start()
@@ -47,8 +49,10 @@ public class PlayerBalloonController : MonoBehaviour
         animator = GetComponent<Animator>(); // Get the Animator component
         //balloonSpriteRenderer = GetComponent<SpriteRenderer>();
         originalBalloonSprite = balloonSpriteRenderer.sprite;
-
+        newOverallCollider = GetComponentsInChildren<BoxCollider2D>().FirstOrDefault(collider => collider.gameObject.name == "ColliderBalloon");
+        newColliderRb = newOverallCollider.gameObject.GetComponent<Rigidbody2D>();
     }
+
 
     void Update()
     {
@@ -57,6 +61,8 @@ public class PlayerBalloonController : MonoBehaviour
         {
             cc2D.enabled = false; // Disable default controller
             playerMovement.enabled = false; // Disable default player movement
+            newOverallCollider.enabled = true;
+            //newColliderRb.WakeUp();
             DisableAnimator(); // Disable the Animator
             FlappyMode();
         }
@@ -70,6 +76,7 @@ public class PlayerBalloonController : MonoBehaviour
             interactionController.actionTriggered = false;  // Reset actionTriggered
             interactionController = null;
             rb.gravityScale = originalGravityScale; // Reset gravity
+            newOverallCollider.enabled = false;
             EnableAnimator(); // Re-enable the Animator
 
 
@@ -99,7 +106,9 @@ public class PlayerBalloonController : MonoBehaviour
             cc2D.enabled = true; // Re-enable default controller
             interactionController = null;
             rb.gravityScale = originalGravityScale; // Reset gravity
+            newOverallCollider.enabled = false;
             EnableAnimator(); // Re-enable the Animator
+            
 
         }
         if (other.CompareTag("Gnist"))
@@ -132,11 +141,15 @@ public class PlayerBalloonController : MonoBehaviour
             rb.AddForce(new Vector2(0, flapForce), ForceMode2D.Impulse);
 
         }
-        rb.velocity = new Vector2(-breezeForce, rb.velocity.y); // Apply breeze force
-    }
-
+        //Debug.Log("velocity is " + rb.velocity.x);
+        if(-rb.velocity.x < 2f){
+            //Debug.Log("velocity is less than 2");
+            rb.AddForce(new Vector2(-breezeForce, 0), ForceMode2D.Impulse);
+        }
+        
 
   
 
 
+}
 }
