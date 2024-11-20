@@ -15,6 +15,7 @@ public class MoveToBottomRight : MonoBehaviour
     private RectTransform rectTransform; // Cached RectTransform
     private SpriteRenderer spriteRenderer; // SpriteRenderer for fading out
     private Image image; // Image component for fading in
+    public static bool LevelKey = false; // Global variable to track the level key status
 
     // Start is called before the first frame update
     void Start()
@@ -51,6 +52,7 @@ public class MoveToBottomRight : MonoBehaviour
         if (interactionController != null && interactionController.actionTriggered && !isMoving)
         {
             StartCoroutine(AnimateAndMoveToBottomRight());
+            LevelKey = true; // Set the global variable to true
         }
     }
 
