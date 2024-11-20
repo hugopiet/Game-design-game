@@ -7,7 +7,7 @@ public class MoveToBottomRight : MonoBehaviour
 {
     public RectTransform uiCanvas; // Reference to the UI Canvas
     public bool useAnimation = true; // Boolean to enable or disable animation
-    public float animationDuration = 1f; // Duration of the animation
+    public float animationDuration = 3f; // Duration of the animation
     public Vector2 offset = new Vector2(-30, 30); // Offset to adjust the position
 
     private InteractionController interactionController; // Reference to the InteractionController
