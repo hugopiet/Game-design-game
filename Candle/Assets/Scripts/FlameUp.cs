@@ -7,6 +7,7 @@ public class FlameUp : MonoBehaviour
     private Animator gnist;
 
     public bool flameUp = false;
+    public bool flamedUpShort = false;
     public Gnistfollow gnistfollow;
     public ParticleSystem flameParticleSystem; // Reference to the ParticleSystem
     public CinemachineImpulseSource impulseSource; // Reference to the CinemachineImpulseSource
@@ -52,6 +53,7 @@ public class FlameUp : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F))
         {
             Debug.Log("F key pressed");
+            flamedUpShort = true;
             // Check if gnist is in the Wait state
             if (gnistfollow.currentState == Gnistfollow.State.Wait)
             {
@@ -80,9 +82,10 @@ public class FlameUp : MonoBehaviour
             if (isFlameUp)
             {
                 flameParticleSystem.Play();
-                 if (impulseSource != null)
+                 if (impulseSource != null && flamedUpShort)
                     {
                         impulseSource.GenerateImpulse();
+                        flamedUpShort = false;
                     }
             }
             else

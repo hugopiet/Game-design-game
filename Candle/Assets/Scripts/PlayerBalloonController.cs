@@ -49,7 +49,7 @@ public class PlayerBalloonController : MonoBehaviour
         animator = GetComponent<Animator>(); // Get the Animator component
         //balloonSpriteRenderer = GetComponent<SpriteRenderer>();
         originalBalloonSprite = balloonSpriteRenderer.sprite;
-        newOverallCollider = GetComponentsInChildren<BoxCollider2D>().FirstOrDefault(collider => collider.gameObject.name == "ColliderBalloon");
+        //newOverallCollider = GetComponentsInChildren<BoxCollider2D>().FirstOrDefault(collider => collider.gameObject.name == "ColliderBalloon");
         newColliderRb = newOverallCollider.gameObject.GetComponent<Rigidbody2D>();
     }
 
@@ -142,7 +142,7 @@ public class PlayerBalloonController : MonoBehaviour
 
         }
         //Debug.Log("velocity is " + rb.velocity.x);
-        if(-rb.velocity.x < 2f){
+        if(-rb.velocity.x < 4f){
             //Debug.Log("velocity is less than 2");
             rb.AddForce(new Vector2(-breezeForce, 0), ForceMode2D.Impulse);
         }

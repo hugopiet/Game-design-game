@@ -1795,6 +1795,11 @@ Rigidbody2D:
   m_SleepingMode: 2
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!61 &1404171154 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 1085902180319468387, guid: 5f72232731cdf4046981cc6a696a1a6f, type: 3}
+  m_PrefabInstance: {fileID: 1944624527}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1564279327 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6766569617343360397, guid: 5f72232731cdf4046981cc6a696a1a6f, type: 3}
@@ -1824,7 +1829,7 @@ MonoBehaviour:
   flapForce: 5
   reducedGravityScale: 1.1
   breezeForce: 0.1
-  newOverallCollider: {fileID: 0}
+  newOverallCollider: {fileID: 1404171154}
   balloonOffset: {x: 0, y: 1, z: 0}
 --- !u!212 &1564279342 stripped
 SpriteRenderer:
