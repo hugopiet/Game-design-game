@@ -1,7 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class FlameUp : MonoBehaviour
 {
@@ -9,13 +7,43 @@ public class FlameUp : MonoBehaviour
     private Animator gnist;
 
     public bool flameUp = false;
-
     public Gnistfollow gnistfollow;
+    public ParticleSystem flameParticleSystem; // Reference to the ParticleSystem
+    public CinemachineImpulseSource impulseSource; // Reference to the CinemachineImpulseSource
 
     void Start()
     {
         // Get the Animator component on the same GameObject
         gnist = GetComponent<Animator>();
+
+        // Find the ParticleSystem component with the "FlameUp" tag in the child objects
+        if (flameParticleSystem == null)
+        {
+            ParticleSystem[] particleSystems = GetComponentsInChildren<ParticleSystem>();
+            foreach (ParticleSystem ps in particleSystems)
+            {
+                if (ps.CompareTag("FlameUp"))
+                {
+                    flameParticleSystem = ps;
+                    break;
+                }
+            }
+
+            if (flameParticleSystem == null)
+            {
+                Debug.LogError("ParticleSystem with 'FlameUp' tag not found in children!");
+            }
+        }
+
+        // Get the CinemachineImpulseSource component on the same GameObject
+        if (impulseSource == null)
+        {
+            impulseSource = GetComponent<CinemachineImpulseSource>();
+            if (impulseSource == null)
+            {
+                Debug.LogError("CinemachineImpulseSource component not found!");
+            }
+        }
     }
 
     void Update()
@@ -45,5 +73,25 @@ public class FlameUp : MonoBehaviour
     {
         // Set the trigger parameter to activate the flameUp animation
         gnist.SetBool("FlameUp", isFlameUp);
+
+        // Trigger the particle system
+        if (flameParticleSystem != null)
+        {
+            if (isFlameUp)
+            {
+                flameParticleSystem.Play();
+                 if (impulseSource != null)
+                    {
+                        impulseSource.GenerateImpulse();
+                    }
+            }
+            else
+            {
+                flameParticleSystem.Stop();
+            }
+        }
+
+        // Trigger the camera shake
+       
     }
 }

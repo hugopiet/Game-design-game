@@ -35,6 +35,7 @@ public class InteractionController : MonoBehaviour
     public bool useParticles = true;
     public float highlightIntensity = 0.9f;
     public float ParticleRadius = 10.5f;
+    private Color emitterColor = Color.red;
 
     private void Start()
     {
@@ -42,6 +43,13 @@ public class InteractionController : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         originalColor = sprite.color;
 
+        if (!player.CompareTag("Gnist"))
+        {
+            actionDistance = interactionDistance;
+            // Set emitter color to red to indicate that the player does not have the "Gnist" tag
+            emitterColor = Color.white;
+            Debug.Log("this is not Gnist, color set to white" + player.tag);
+        }
         // Setup particles if needed
         if (useParticles)
         {
@@ -50,10 +58,7 @@ public class InteractionController : MonoBehaviour
 //!!!!!!!!!
         //highlightParticles.Play();
 
-        if (!player.CompareTag("Gnist"))
-        {
-            actionDistance = interactionDistance;
-        }
+        
         
     }
 
@@ -98,35 +103,50 @@ public class InteractionController : MonoBehaviour
         //Debug.Log("isInRange: " + isInRange);
         actionTrigger = false;
 
-        if (player.CompareTag("Gnist"))
+        
+
+        if (isInInteractionRange)
         {
-            FlameUp flameUpScript = player.GetComponent<FlameUp>();
-            if (flameUpScript != null && flameUpScript.flameUp)
+            var main = highlightParticles.main;
+            if (player.CompareTag("Gnist"))
             {
-                actionTrigger = true;
-                Debug.Log("FlameUp is true");
+                main.startColor = new Color(0.5f, 0f, 0f); // Dark green color
             }
-        }
-        else
-        {
-            if (enableKeyPress == Input.GetKeyDown(interactionKey))
+
+            if (player.CompareTag("Gnist"))
             {
-                actionTrigger = true;
+                FlameUp flameUpScript = player.GetComponent<FlameUp>();
+                if (flameUpScript != null && flameUpScript.flameUp)
+                {
+                    actionTrigger = true;
+                    Debug.Log("FlameUp is true");
+                }
+            }
+            else
+            {
+                if (enableKeyPress == Input.GetKeyDown(interactionKey))
+                {
+                    actionTrigger = true;
+                }
+                
+            }
+
+            if(actionTrigger)
+            {
+                switch (interactionType)
+                {
+                    case InteractionType.Information:
+                        ShowInformation();
+                        break;
+                    case InteractionType.Action:
+                        TriggerAction();
+                        break;
+                }
             }
             
-        }
-
-        if (isInInteractionRange && actionTrigger)
-        {
-            switch (interactionType)
-            {
-                case InteractionType.Information:
-                    ShowInformation();
-                    break;
-                case InteractionType.Action:
-                    TriggerAction();
-                    break;
-            }
+        }else{
+            var main = highlightParticles.main;
+            main.startColor = emitterColor;
         }
         
         if (!actionRepeatable && actionTriggered)
@@ -191,32 +211,35 @@ public class InteractionController : MonoBehaviour
     private void TriggerAction()
     {
         actionTriggered = !actionTriggered; // Toggle the action state
+        actionTrigger = false;
         Debug.Log($"Action triggered: {actionTriggered}");
     }
 
     private void SetupParticleSystem()
     {
-     GameObject particleObj = new GameObject("HighlightParticles");
-    particleObj.transform.parent = transform;
-    particleObj.transform.localPosition = Vector3.zero;
-    
-    highlightParticles = particleObj.AddComponent<ParticleSystem>();
-    var renderer = particleObj.GetComponent<ParticleSystemRenderer>();
-    renderer.material = new Material(Shader.Find("Sprites/Default"));
+        GameObject particleObj = new GameObject("HighlightParticles");
+        particleObj.transform.parent = transform;
+        particleObj.transform.localPosition = Vector3.zero;
 
-  var main = highlightParticles.main;
-    main.loop = true;
-    main.startSize = 0.2f;
-    main.startSpeed = 1f;
-    main.startLifetime = 1f;
-    
-    var emission = highlightParticles.emission;
-    emission.rateOverTime = 10;
+        highlightParticles = particleObj.AddComponent<ParticleSystem>();
+        var renderer = particleObj.GetComponent<ParticleSystemRenderer>();
+        renderer.material = new Material(Shader.Find("Sprites/Default"));
 
-    var shape = highlightParticles.shape;
-    shape.shapeType = ParticleSystemShapeType.Circle;
-    shape.radius = ParticleRadius;
+        var main = highlightParticles.main;
+        main.loop = true;
+        main.startSize = 0.5f;
+        main.startSpeed = 1f;
+        main.startLifetime = 1f;
+        main.startColor = emitterColor;
+        Debug.Log("emittercolor:"+ emitterColor);
 
-    highlightParticles.Stop();
-}
+        var emission = highlightParticles.emission;
+        emission.rateOverTime = 20;
+
+        var shape = highlightParticles.shape;
+        shape.shapeType = ParticleSystemShapeType.Circle;
+        shape.radius = ParticleRadius;
+
+        highlightParticles.Stop();
+    }
 }
