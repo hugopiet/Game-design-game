@@ -20,10 +20,7 @@ public class SceneController : MonoBehaviour
 
     public void LoadSpecificLevel(int levelIndex) {
         bool gnist = false;
-           if (InfoBubbleManager.Instance != null)
-        {
-            InfoBubbleManager.Instance.HideInfoBubble(true); // Immediate hide
-        }
+
         Debug.Log("Loading level with index: " + levelIndex);
         if (levelIndex == 10) {
             levelIndex = 2;
@@ -35,6 +32,10 @@ public class SceneController : MonoBehaviour
     private IEnumerator LoadLevel(int levelIndex, bool gnist)
 
     {
+         if (InfoBubbleManager.Instance != null)
+        {
+            InfoBubbleManager.Instance.HideInfoBubble(true); // Immediate hide
+        }
         // Play the transition animation
         if (transition != null)
         {
