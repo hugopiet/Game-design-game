@@ -102,6 +102,7 @@ public class InteractionController : MonoBehaviour
         isInInteractionRange = distance <= actionDistance;
         //Debug.Log("isInRange: " + isInRange);
         actionTrigger = false;
+        actionTriggered = false;
 
         
 
@@ -145,26 +146,31 @@ public class InteractionController : MonoBehaviour
             }
             
         }else{
-            var main = highlightParticles.main;
-            main.startColor = emitterColor;
-        }
-        
-        if (!actionRepeatable && actionTriggered)
-        {
-            //OnExitRange();
-            if (useColorHighlight)
-            {
-                sprite.color = originalColor;
-            }
-
             if (useParticles && highlightParticles != null)
             {
-                highlightParticles.Stop();
-            }
+                var main = highlightParticles.main;
+                main.startColor = emitterColor;
 
-            enabled = false; // Deactivate the script
+            }
+            
+            if (!actionRepeatable && actionTriggered)
+            {
+                //OnExitRange();
+                if (useColorHighlight)
+                {
+                    sprite.color = originalColor;
+                }
+
+                if (useParticles && highlightParticles != null)
+                {
+                    highlightParticles.Stop();
+                }
+
+                enabled = false; // Deactivate the script
+            }
+        
         }
-    
+        
     }
 
     private void OnEnterRange()
