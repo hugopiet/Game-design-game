@@ -234,6 +234,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   speedVariation: 0.5
-  pushForce: 10
-  despawnX: 50
-  Playerrb: {fileID: 0}
+  pushAmount: 10
+  despawnX: 120
