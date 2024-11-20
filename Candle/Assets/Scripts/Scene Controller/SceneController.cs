@@ -35,6 +35,10 @@ public class SceneController : MonoBehaviour
     private IEnumerator LoadLevel(int levelIndex, bool gnist)
 
     {
+         if (InfoBubbleManager.Instance != null)
+        {
+            InfoBubbleManager.Instance.HideInfoBubble(true); // Immediate hide
+        }
         // Play the transition animation
         if (transition != null)
         {
