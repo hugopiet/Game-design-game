@@ -108,11 +108,16 @@ public class InteractionController : MonoBehaviour
 
         if (isInInteractionRange)
         {
-            var main = highlightParticles.main;
-            if (player.CompareTag("Gnist"))
+            if (useParticles && highlightParticles != null)
             {
-                main.startColor = new Color(0.5f, 0f, 0f); // Dark green color
+                var main = highlightParticles.main;
+                if (player.CompareTag("Gnist"))
+                {
+                    main.startColor = new Color(0.5f, 0f, 0f); // Dark green color
+                }
             }
+            
+            
 
             if (player.CompareTag("Gnist"))
             {
@@ -229,7 +234,22 @@ public class InteractionController : MonoBehaviour
 
         highlightParticles = particleObj.AddComponent<ParticleSystem>();
         var renderer = particleObj.GetComponent<ParticleSystemRenderer>();
-        renderer.material = new Material(Shader.Find("Sprites/Default"));
+
+        // Load the material from the Resources folder
+        Material particleMaterial = Resources.Load<Material>("InteractionParticle");
+
+        if (particleMaterial != null)
+        {
+            renderer.material = particleMaterial;
+        }
+        else
+        {
+            Debug.LogError("InteractionParticle material not found in Resources folder.");
+        }
+
+        // Set the sorting layer and order in layer
+        renderer.sortingLayerName = "Default";
+        renderer.sortingOrder = 4;
 
         var main = highlightParticles.main;
         main.loop = true;
@@ -237,7 +257,7 @@ public class InteractionController : MonoBehaviour
         main.startSpeed = 1f;
         main.startLifetime = 1f;
         main.startColor = emitterColor;
-        Debug.Log("emittercolor:"+ emitterColor);
+        Debug.Log("emittercolor:" + emitterColor);
 
         var emission = highlightParticles.emission;
         emission.rateOverTime = 20;

@@ -235,5 +235,5 @@ MonoBehaviour:
   speed: 5
   speedVariation: 0.5
   pushForce: 15
-  despawnX: 120
+  despawnX: 200
   Playerrb: {fileID: 0}
