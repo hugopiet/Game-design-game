@@ -223,5 +223,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   speedVariation: 0.5
-  pushAmount: 1000
+  pushAmount: 10
   despawnX: 50

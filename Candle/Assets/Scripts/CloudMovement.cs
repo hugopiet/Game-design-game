@@ -9,20 +9,11 @@ public class CloudMovement : MonoBehaviour
     public float pushAmount = 1f; // Amount to push the other GameObject to the right on trigger enter
     public float despawnX = 10f; // X coordinate at which the GameObject will be despawned
 
-    private Rigidbody rb;
-
     // Start is called before the first frame update
     void Start()
     {
         // Apply random variation to the speed
         speed += Random.Range(-speedVariation, speedVariation);
-
-        // Get the Rigidbody component
-        rb = GetComponent<Rigidbody>();
-        if (rb == null)
-        {
-            Debug.LogError("Rigidbody component is missing.");
-        }
     }
 
     // Update is called once per frame
@@ -39,32 +30,19 @@ public class CloudMovement : MonoBehaviour
     }
 
     // Method called when the GameObject enters a trigger collider
-    void OnTriggerEnter(Collider other)
+    void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("Trigger entered with " + other.name);
-        Rigidbody otherRb = other.GetComponent<Rigidbody>();
+        Rigidbody2D otherRb = other.GetComponent<Rigidbody2D>();
         if (otherRb != null)
         {
             Debug.Log("Pushing " + other.name);
-            // Temporarily set the Rigidbody to non-kinematic to apply the force
-            bool wasKinematic = otherRb.isKinematic;
-            if (wasKinematic)
-            {
-                otherRb.isKinematic = false;
-            }
-
-            // Push the other GameObject a little to the right
-            otherRb.AddForce(Vector3.right * pushAmount, ForceMode.Impulse);
-
-            // Restore the kinematic state
-            if (wasKinematic)
-            {
-                otherRb.isKinematic = true;
-            }
+            // Push the other GameObject a little to the right by modifying its position
+            other.transform.position += new Vector3(pushAmount, 0, 0);
         }
         else
         {
-            Debug.Log("No Rigidbody found on " + other.name);
+            Debug.Log("No Rigidbody2D found on " + other.name);
         }
     }
 }

@@ -9872,7 +9872,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   radius: 5
-  speed: 8
+  speed: 12
   slowingDistance: 8
   border: 0.1
   staminaRegenRate: 10

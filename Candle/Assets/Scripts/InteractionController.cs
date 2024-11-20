@@ -35,6 +35,7 @@ public class InteractionController : MonoBehaviour
     public bool useParticles = true;
     public float highlightIntensity = 0.9f;
     public float ParticleRadius = 10.5f;
+    private Color emitterColor = Color.red;
 
     private void Start()
     {
@@ -53,6 +54,9 @@ public class InteractionController : MonoBehaviour
         if (!player.CompareTag("Gnist"))
         {
             actionDistance = interactionDistance;
+            // Set emitter color to red to indicate that the player does not have the "Gnist" tag
+            emitterColor = Color.white;
+            Debug.Log("this is not Gnist, color set to white" + player.tag);
         }
         
     }
@@ -116,17 +120,27 @@ public class InteractionController : MonoBehaviour
             
         }
 
-        if (isInInteractionRange && actionTrigger)
+        if (isInInteractionRange)
         {
-            switch (interactionType)
+            var main = highlightParticles.main;
+            main.startColor = new Color(0.5f, 0f, 0f); // Dark red color
+
+            if(actionTrigger)
             {
-                case InteractionType.Information:
-                    ShowInformation();
-                    break;
-                case InteractionType.Action:
-                    TriggerAction();
-                    break;
+                switch (interactionType)
+                {
+                    case InteractionType.Information:
+                        ShowInformation();
+                        break;
+                    case InteractionType.Action:
+                        TriggerAction();
+                        break;
+                }
             }
+            
+        }else{
+            var main = highlightParticles.main;
+            main.startColor = emitterColor;
         }
         
         if (!actionRepeatable && actionTriggered)
@@ -196,27 +210,29 @@ public class InteractionController : MonoBehaviour
 
     private void SetupParticleSystem()
     {
-     GameObject particleObj = new GameObject("HighlightParticles");
-    particleObj.transform.parent = transform;
-    particleObj.transform.localPosition = Vector3.zero;
-    
-    highlightParticles = particleObj.AddComponent<ParticleSystem>();
-    var renderer = particleObj.GetComponent<ParticleSystemRenderer>();
-    renderer.material = new Material(Shader.Find("Sprites/Default"));
+        GameObject particleObj = new GameObject("HighlightParticles");
+        particleObj.transform.parent = transform;
+        particleObj.transform.localPosition = Vector3.zero;
 
-  var main = highlightParticles.main;
-    main.loop = true;
-    main.startSize = 0.2f;
-    main.startSpeed = 1f;
-    main.startLifetime = 1f;
-    
-    var emission = highlightParticles.emission;
-    emission.rateOverTime = 10;
+        highlightParticles = particleObj.AddComponent<ParticleSystem>();
+        var renderer = particleObj.GetComponent<ParticleSystemRenderer>();
+        renderer.material = new Material(Shader.Find("Sprites/Default"));
 
-    var shape = highlightParticles.shape;
-    shape.shapeType = ParticleSystemShapeType.Circle;
-    shape.radius = ParticleRadius;
+        var main = highlightParticles.main;
+        main.loop = true;
+        main.startSize = 0.2f;
+        main.startSpeed = 1f;
+        main.startLifetime = 1f;
+        main.startColor = emitterColor;
+        Debug.Log("emittercolor:"+ emitterColor);
 
-    highlightParticles.Stop();
-}
+        var emission = highlightParticles.emission;
+        emission.rateOverTime = 10;
+
+        var shape = highlightParticles.shape;
+        shape.shapeType = ParticleSystemShapeType.Circle;
+        shape.radius = ParticleRadius;
+
+        highlightParticles.Stop();
+    }
 }
