@@ -49,7 +49,7 @@ public class PlayerBalloonController : MonoBehaviour
         animator = GetComponent<Animator>(); // Get the Animator component
         //balloonSpriteRenderer = GetComponent<SpriteRenderer>();
         originalBalloonSprite = balloonSpriteRenderer.sprite;
-        newOverallCollider = GetComponentsInChildren<BoxCollider2D>().FirstOrDefault(collider => collider.gameObject.name == "ColliderBalloon");
+        //newOverallCollider = GetComponentsInChildren<BoxCollider2D>().FirstOrDefault(collider => collider.gameObject.name == "ColliderBalloon");
         newColliderRb = newOverallCollider.gameObject.GetComponent<Rigidbody2D>();
     }
 
@@ -133,6 +133,7 @@ public class PlayerBalloonController : MonoBehaviour
     }
     void FlappyMode()
     {
+        Debug.Log("Flappy Mode_Player controller");
         spriteRenderer.sprite = flappySprite;
         balloonSpriteRenderer.sprite = flappyBalloonSprite;
         if (Input.GetKeyDown(KeyCode.F))
@@ -141,9 +142,9 @@ public class PlayerBalloonController : MonoBehaviour
             rb.AddForce(new Vector2(0, flapForce), ForceMode2D.Impulse);
 
         }
-        //Debug.Log("velocity is " + rb.velocity.x);
+        Debug.Log("velocity is " + rb.velocity.x);
         if(-rb.velocity.x < 2f){
-            //Debug.Log("velocity is less than 2");
+            Debug.Log("velocity is less than 2");
             rb.AddForce(new Vector2(-breezeForce, 0), ForceMode2D.Impulse);
         }
         

@@ -59,6 +59,8 @@ public class GnistControllerBallon : MonoBehaviour
                     if (interactionController && interactionController.actionTriggered)
                     {
                         currentState = BalloonState.FlappyMode;
+                         Debug.Log("in Flappy Mode!!!!!");
+
                         // FlappyMode behavior to be defined later
                     }
                     else{
