@@ -6619,7 +6619,7 @@ MonoBehaviour:
   sceneController: {fileID: 1321764186}
   messageImage: {fileID: 1218214345}
   messageDisplayTime: 2
-  levelToLoad: 2
+  levelToLoad: 10
 --- !u!114 &407942201
 MonoBehaviour:
   m_ObjectHideFlags: 0
