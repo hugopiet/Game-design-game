@@ -43,6 +43,13 @@ public class InteractionController : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         originalColor = sprite.color;
 
+        if (!player.CompareTag("Gnist"))
+        {
+            actionDistance = interactionDistance;
+            // Set emitter color to red to indicate that the player does not have the "Gnist" tag
+            emitterColor = Color.white;
+            Debug.Log("this is not Gnist, color set to white" + player.tag);
+        }
         // Setup particles if needed
         if (useParticles)
         {
@@ -51,13 +58,7 @@ public class InteractionController : MonoBehaviour
 //!!!!!!!!!
         //highlightParticles.Play();
 
-        if (!player.CompareTag("Gnist"))
-        {
-            actionDistance = interactionDistance;
-            // Set emitter color to red to indicate that the player does not have the "Gnist" tag
-            emitterColor = Color.white;
-            Debug.Log("this is not Gnist, color set to white" + player.tag);
-        }
+        
         
     }
 
@@ -123,7 +124,10 @@ public class InteractionController : MonoBehaviour
         if (isInInteractionRange)
         {
             var main = highlightParticles.main;
-            main.startColor = new Color(0.5f, 0f, 0f); // Dark red color
+            if (player.CompareTag("Gnist"))
+            {
+                main.startColor = new Color(0.5f, 0f, 0f); // Dark green color
+            }
 
             if(actionTrigger)
             {
