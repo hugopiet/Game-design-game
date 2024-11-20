@@ -68,10 +68,10 @@ public class InteractionController : MonoBehaviour
         HandleInteraction();
     
     // Add this to handle closing the info bubble
-    if (Input.GetKeyDown(KeyCode.Escape))
-    {
-        InfoBubbleManager.Instance.HideInfoBubble();
-    }
+    // if (Input.GetKeyDown(KeyCode.Escape))
+    // {
+    //     InfoBubbleManager.Instance.HideInfoBubble();
+    // }
     }
 
 
