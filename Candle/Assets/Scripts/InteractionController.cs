@@ -103,23 +103,7 @@ public class InteractionController : MonoBehaviour
         //Debug.Log("isInRange: " + isInRange);
         actionTrigger = false;
 
-        if (player.CompareTag("Gnist"))
-        {
-            FlameUp flameUpScript = player.GetComponent<FlameUp>();
-            if (flameUpScript != null && flameUpScript.flameUp)
-            {
-                actionTrigger = true;
-                Debug.Log("FlameUp is true");
-            }
-        }
-        else
-        {
-            if (enableKeyPress == Input.GetKeyDown(interactionKey))
-            {
-                actionTrigger = true;
-            }
-            
-        }
+        
 
         if (isInInteractionRange)
         {
@@ -127,6 +111,24 @@ public class InteractionController : MonoBehaviour
             if (player.CompareTag("Gnist"))
             {
                 main.startColor = new Color(0.5f, 0f, 0f); // Dark green color
+            }
+
+            if (player.CompareTag("Gnist"))
+            {
+                FlameUp flameUpScript = player.GetComponent<FlameUp>();
+                if (flameUpScript != null && flameUpScript.flameUp)
+                {
+                    actionTrigger = true;
+                    Debug.Log("FlameUp is true");
+                }
+            }
+            else
+            {
+                if (enableKeyPress == Input.GetKeyDown(interactionKey))
+                {
+                    actionTrigger = true;
+                }
+                
             }
 
             if(actionTrigger)
@@ -209,6 +211,7 @@ public class InteractionController : MonoBehaviour
     private void TriggerAction()
     {
         actionTriggered = !actionTriggered; // Toggle the action state
+        actionTrigger = false;
         Debug.Log($"Action triggered: {actionTriggered}");
     }
 
@@ -224,14 +227,14 @@ public class InteractionController : MonoBehaviour
 
         var main = highlightParticles.main;
         main.loop = true;
-        main.startSize = 0.2f;
+        main.startSize = 0.5f;
         main.startSpeed = 1f;
         main.startLifetime = 1f;
         main.startColor = emitterColor;
         Debug.Log("emittercolor:"+ emitterColor);
 
         var emission = highlightParticles.emission;
-        emission.rateOverTime = 10;
+        emission.rateOverTime = 20;
 
         var shape = highlightParticles.shape;
         shape.shapeType = ParticleSystemShapeType.Circle;
