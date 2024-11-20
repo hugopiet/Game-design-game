@@ -40,7 +40,8 @@ public class InfoBubbleManager : MonoBehaviour
     public void ShowInfoBubble(string text, int levelIndex)
     {
         infoBubblePanel.SetActive(true);
-        infoText.text = text;
+        string text2 = LoadLevelText(levelIndex); // Load the text for the given level
+        infoText.text = text2;
         PlayLevelButton.gameObject.SetActive(true); // Show the button
         buttonText.text = "Play Level " + levelIndex; // Set the button text dynamically
         
@@ -101,5 +102,21 @@ public class InfoBubbleManager : MonoBehaviour
         }
         
         infoBubblePanel.SetActive(false);
+    }
+
+     private string LoadLevelText(int levelIndex)
+    {
+        string path = $"level{levelIndex}"; // Path to the text file in Resources
+        TextAsset textAsset = Resources.Load<TextAsset>(path);
+
+        if (textAsset != null)
+        {
+            return textAsset.text;
+        }
+        else
+        {
+            Debug.LogWarning($"Text file for Level {levelIndex} not found at path: {path}");
+            return "No information available for this level.";
+        }
     }
 }
