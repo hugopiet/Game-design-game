@@ -7,3 +7,5 @@ Now, many generations later, Mister Blob's descendant embarks on a bold journey 
 Your mission is to find the flint stones and bring them back to the fireplace where your adventure begins. Along the way, you’ll climb over trees and explore a small cave. Inside, you’ll encounter a timed challenge: interact with the button to open a pathway, but be quick! The door will close if you don’t make it to the other side in time.
 
 Good luck!
+
+( press ESC to learn how to use the controls )
