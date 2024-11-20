@@ -8,6 +8,8 @@ TagManager:
   - Flame
   - Gnist
   - BalloonZone
+  - FlameUp
+  - ColliderForBalloonMode
   layers:
   - Default
   - TransparentFX
