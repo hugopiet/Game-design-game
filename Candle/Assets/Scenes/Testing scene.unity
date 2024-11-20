@@ -250,8 +250,7 @@ Transform:
   m_LocalPosition: {x: 162.58537, y: 31.926685, z: -0.6600158}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1174605643}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &429668294 stripped
@@ -363,7 +362,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 1.24}
-  m_ConnectedAnchor: {x: 0.10174801, y: 0.036731716}
+  m_ConnectedAnchor: {x: 0.10174844, y: 0.036731716}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -615,7 +614,8 @@ Transform:
   m_LocalPosition: {x: 133.5, y: 18.4, z: 0}
   m_LocalScale: {x: 3.0976992, y: 3.0976992, z: 3.0976992}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1174605643}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &733050226
@@ -1258,7 +1258,7 @@ MonoBehaviour:
   gnistStats: {fileID: 1120144437}
   player: {fileID: 1564279328}
   balloon: {fileID: 1778652182}
-  hoverHeight: 10
+  hoverHeight: {x: 0, y: 1, z: 0}
   moveSpeed: 5
   smoothTime: 0.3
 --- !u!114 &1120144437 stripped
@@ -1356,13 +1356,13 @@ Transform:
   m_GameObject: {fileID: 1174605642}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -44.17, y: 16.3, z: 0.48642838}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -4.869622, y: 9.628657, z: -0.05603754}
+  m_LocalScale: {x: 0.32282025, y: 0.32282025, z: 0.32282025}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1081463525}
   - {fileID: 464809618}
-  m_Father: {fileID: 408674785}
+  m_Father: {fileID: 628028871}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1564279327 stripped
 GameObject:
@@ -1386,11 +1386,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55763cad1565f40539e1b0511a2b3733, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flappySprite: {fileID: 21300000, guid: 60f698e9c2438404bb870b8117108fa0, type: 3}
   spriteRenderer: {fileID: 0}
+  flappySprite: {fileID: 21300000, guid: 60f698e9c2438404bb870b8117108fa0, type: 3}
+  balloonSpriteRenderer: {fileID: 0}
+  flappyBalloonSprite: {fileID: 0}
   flapForce: 5
   reducedGravityScale: 1.1
   breezeForce: 2
+  balloonOffset: {x: 0, y: 1, z: 0}
 --- !u!1 &1778652176
 GameObject:
   m_ObjectHideFlags: 0
