@@ -10,6 +10,7 @@ TagManager:
   - BalloonZone
   - FlameUp
   - ColliderForBalloonMode
+  - Deactivatebaloon
   layers:
   - Default
   - TransparentFX

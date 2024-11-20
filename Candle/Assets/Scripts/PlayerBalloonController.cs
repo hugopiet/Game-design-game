@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Linq;
+using System.Collections;
+using System.Collections.Generic;
 
 //the idea is that the player has to get the balloon by activating 
 //gnist. the balloon will then come to the player, and the player can
@@ -35,6 +37,7 @@ public class PlayerBalloonController : MonoBehaviour
     public float breezeForce = 0.2f; 
     public BoxCollider2D newOverallCollider;
 
+    private bool triggerFlappyMode = false;
     public Vector3 balloonOffset = new Vector3(0, 1, 0);
     void Start()
     {    
@@ -56,8 +59,12 @@ public class PlayerBalloonController : MonoBehaviour
 
     void Update()
     {
+        if (interactionController != null && interactionController.actionTriggered && !triggerFlappyMode)
+        {
+            triggerFlappyMode = true;
+        }
         // Check if under Gnist and action is triggered
-        if (underGnist && interactionController != null && interactionController.actionTriggered)
+        if (underGnist && interactionController != null && triggerFlappyMode)
         {
             cc2D.enabled = false; // Disable default controller
             playerMovement.enabled = false; // Disable default player movement
@@ -67,20 +74,7 @@ public class PlayerBalloonController : MonoBehaviour
             FlappyMode();
         }
 
-        if(Input.GetKeyDown(KeyCode.K))
-        {
-            Debug.Log("K key pressed");
-            spriteRenderer.sprite = originalSprite; // Reset sprite
-            playerMovement.enabled = true; // Re-enable default player movement 
-            cc2D.enabled = true; // Re-enable default controller
-            interactionController.actionTriggered = false;  // Reset actionTriggered
-            interactionController = null;
-            rb.gravityScale = originalGravityScale; // Reset gravity
-            newOverallCollider.enabled = false;
-            EnableAnimator(); // Re-enable the Animator
-
-
-        }
+        
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -133,18 +127,34 @@ public class PlayerBalloonController : MonoBehaviour
     }
     void FlappyMode()
     {
+                    Debug.Log("in flappy mode");
+
         spriteRenderer.sprite = flappySprite;
         balloonSpriteRenderer.sprite = flappyBalloonSprite;
         if (Input.GetKeyDown(KeyCode.F))
         {
-            // Apply upward force
+            // Apply upward force                    
+            Debug.Log("keypressed");
+
             rb.AddForce(new Vector2(0, flapForce), ForceMode2D.Impulse);
 
         }
         //Debug.Log("velocity is " + rb.velocity.x);
         if(-rb.velocity.x < 4f){
-            //Debug.Log("velocity is less than 2");
+            Debug.Log("velocity is less than 2");
             rb.AddForce(new Vector2(-breezeForce, 0), ForceMode2D.Impulse);
+        }
+        if (transform.position.x <= -140f)
+        {
+            Debug.Log("K key pressed");
+            spriteRenderer.sprite = originalSprite; // Reset sprite
+            playerMovement.enabled = true; // Re-enable default player movement 
+            cc2D.enabled = true; // Re-enable default controller
+            interactionController.actionTriggered = false;  // Reset actionTriggered
+            interactionController = null;
+            rb.gravityScale = originalGravityScale; // Reset gravity
+            newOverallCollider.enabled = false;
+            EnableAnimator(); // Re-enable the Animator
         }
         
 
