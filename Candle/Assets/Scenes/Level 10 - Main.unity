@@ -14050,7 +14050,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1286481431237680654, guid: 5f72232731cdf4046981cc6a696a1a6f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.0012741089
+      value: -0.0012283325
       objectReference: {fileID: 0}
     - target: {fileID: 1286481431237680654, guid: 5f72232731cdf4046981cc6a696a1a6f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -14102,7 +14102,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6766569617343360397, guid: 5f72232731cdf4046981cc6a696a1a6f, type: 3}
       propertyPath: m_Name
-      value: Player
+      value: Blob 10
       objectReference: {fileID: 0}
     - target: {fileID: 7339811455989844254, guid: 5f72232731cdf4046981cc6a696a1a6f, type: 3}
       propertyPath: m_ChannelMask

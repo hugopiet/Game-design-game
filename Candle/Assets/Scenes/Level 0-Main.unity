@@ -12672,11 +12672,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1286481431237680654, guid: 5f72232731cdf4046981cc6a696a1a6f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 33.62668
+      value: 33.08087
       objectReference: {fileID: 0}
     - target: {fileID: 1286481431237680654, guid: 5f72232731cdf4046981cc6a696a1a6f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.20373
+      value: 8.203341
       objectReference: {fileID: 0}
     - target: {fileID: 1286481431237680654, guid: 5f72232731cdf4046981cc6a696a1a6f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -12724,7 +12724,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6766569617343360397, guid: 5f72232731cdf4046981cc6a696a1a6f, type: 3}
       propertyPath: m_Name
-      value: Player
+      value: Blob 0
       objectReference: {fileID: 0}
     - target: {fileID: 8077430870468148543, guid: 5f72232731cdf4046981cc6a696a1a6f, type: 3}
       propertyPath: m_Enabled
