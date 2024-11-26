@@ -10,7 +10,7 @@ public class LevelComplete : MonoBehaviour
     public SceneController sceneController;
     public GameObject messageImage; // GameObject for the message image
     public float messageDisplayTime = 2f; // Time to display the message
-    public int levelToLoad = 10; // Level index to load
+    public int levelToLoad = 1; // Level index to load
 
     void Start()
     {
