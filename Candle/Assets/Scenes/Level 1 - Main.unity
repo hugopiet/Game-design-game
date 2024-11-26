@@ -1048,7 +1048,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6766569617343360397, guid: 5f72232731cdf4046981cc6a696a1a6f, type: 3}
       propertyPath: m_Name
-      value: Blob 1
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 8316306829294745581, guid: 5f72232731cdf4046981cc6a696a1a6f, type: 3}
       propertyPath: m_BoundingShape2D
